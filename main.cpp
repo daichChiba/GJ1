@@ -1,16 +1,30 @@
 #include <Novice.h>
+#include <vector>
+#include <string>
+#include <iostream>
+#include <fstream>
+#include <sstream>
+#include <assert.h>
+#include "map.h"
+#include "Player.h"
+
 
 const char kWindowTitle[] = "大脱獄";
+
+
+
 
 // Windowsアプリでのエントリーポイント(main関数)
 int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 
 	// ライブラリの初期化
 	Novice::Initialize(kWindowTitle, 1280, 720);
+	Player* player = new Player();
+
 
 	// キー入力結果を受け取る箱
-	char keys[256] = {0};
-	char preKeys[256] = {0};
+	char keys[256] = { 0 };
+	char preKeys[256] = { 0 };
 
 	// ウィンドウの×ボタンが押されるまでループ
 	while (Novice::ProcessMessage() == 0) {
@@ -25,6 +39,9 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 		/// ↓更新処理ここから
 		///
 
+		player->Update(keys);
+		player->map->Update();
+
 		///
 		/// ↑更新処理ここまで
 		///
@@ -32,6 +49,9 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 		///
 		/// ↓描画処理ここから
 		///
+
+		player->Draw();
+		player->map->Draw();
 
 		///
 		/// ↑描画処理ここまで

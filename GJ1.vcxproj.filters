@@ -44,6 +44,15 @@
     <ClCompile Include="IntVector2.cpp">
       <Filter>KamataEngine</Filter>
     </ClCompile>
+    <ClCompile Include="MapChipField.cpp">
+      <Filter>KamataEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>KamataEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="Map.cpp">
+      <Filter>KamataEngine</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="C:\KamataEngine\DirectXGame\audio\Audio.h">
@@ -120,5 +129,8 @@
     <ClInclude Include="HitBox.h" />
     <ClInclude Include="Corners.h" />
     <ClInclude Include="IntVector2.h" />
+    <ClInclude Include="MapChipField.h" />
+    <ClInclude Include="Player.h" />
+    <ClInclude Include="Map.h" />
   </ItemGroup>
 </Project>

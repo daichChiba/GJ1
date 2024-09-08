@@ -118,6 +118,9 @@ xcopy C:\KamataEngine\DirectXGame\Resources "$(OutDirFullPath)NoviceResources" /
     <ClCompile Include="HitBox.cpp" />
     <ClCompile Include="IntVector2.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Map.cpp" />
+    <ClCompile Include="MapChipField.cpp" />
+    <ClCompile Include="Player.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="C:\KamataEngine\DirectXGame\base\StringUtility.h" />
@@ -150,6 +153,9 @@ xcopy C:\KamataEngine\DirectXGame\Resources "$(OutDirFullPath)NoviceResources" /
     <ClInclude Include="Corners.h" />
     <ClInclude Include="HitBox.h" />
     <ClInclude Include="IntVector2.h" />
+    <ClInclude Include="Map.h" />
+    <ClInclude Include="MapChipField.h" />
+    <ClInclude Include="Player.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
