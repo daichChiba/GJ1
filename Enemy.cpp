@@ -1,6 +1,6 @@
 ﻿#include "Enemy.h"
 
-Enemy::Enemy(){
+Enemy::Enemy() {
 	pos_ = { 400.0f,128.0f };//pos_
 	verocity = { 0.0f,0.0f };//verocity
 	direction = { 0.0f, 0.0f };//direction
@@ -11,32 +11,41 @@ Enemy::Enemy(){
 	tmpSpeed = 0.0f;
 	EnemyGH = Novice::LoadTexture("./Resource/Knight.png");
 	isWallCollision = false;
-
+	DirectionCount = 120;
 }
 
-void Enemy::Update(){
+void Enemy::Update() {
 	map->Update();
 	//向きの初期化
 	direction.x = 0.0f;
 	direction.y = 0.0f;
 
-	if (isWallCollision==false){
-		if (DirectionNumber==1) {
-			direction.x += 1.0f;
-		}
-		if (DirectionNumber == 2) {
-			direction.x -= 1.0f;
-		}
-		if (DirectionNumber == 3) {
-			direction.y -= 1.0f;
-		}
-		if (DirectionNumber == 4) {
-			direction.y += 1.0f;
+	DirectionCount -= 1;
+
+	if (isWallCollision == false) {
+		if (DirectionCount > 0) {
+			if (DirectionNumber == 1) {
+				direction.x += 1.0f;
+			}
+			if (DirectionNumber == 2) {
+				direction.x -= 1.0f;
+			}
+			if (DirectionNumber == 3) {
+				direction.y -= 1.0f;
+			}
+			if (DirectionNumber == 4) {
+				direction.y += 1.0f;
+			}
 		}
 	}
-	if (isWallCollision){
-		DirectionNumber = static_cast<int>(rand() % 4+1);
+	if (isWallCollision) {
+		DirectionNumber = static_cast<int>(rand() % 4 + 1);
 		isWallCollision = false;
+	}
+
+	if (DirectionCount<=0){
+		DirectionCount = 120;
+		DirectionNumber = static_cast<int>(rand() % 4 + 1);
 	}
 
 
@@ -120,7 +129,7 @@ void Enemy::Update(){
 
 }
 
-void Enemy::Draw(){
+void Enemy::Draw() {
 	Novice::DrawSprite(
 		static_cast<int>(pos_.x - (radius_ * 0.5f)), static_cast<int>(pos_.y - (radius_ * 0.5f)),
 		EnemyGH,
@@ -134,9 +143,10 @@ void Enemy::Draw(){
 		0.0f, BLACK, kFillModeWireFrame
 	);
 
-	if (isWallCollision==false){
+	if (isWallCollision == false) {
 		Novice::ScreenPrintf(0, 640, "isWallCollision=false");
-	} else{
+	} else {
 		Novice::ScreenPrintf(0, 640, "isWallCollision=true");
 	}
+	Novice::ScreenPrintf(0, 680, "DirectionCount=%d",DirectionCount);
 }

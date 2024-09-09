@@ -30,6 +30,7 @@ private:
 	bool isWallCollision;
 
 	int DirectionNumber = 1;
+	int DirectionCount;
 
 
 
