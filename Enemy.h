@@ -12,7 +12,8 @@ public:
 	HitBox* hitBox_ = new HitBox();
 	Map* map = new Map();
 
-
+	Vector2 GetPos_() { return pos_; }
+	float GetRadius_() { return radius_; }
 
 
 private:

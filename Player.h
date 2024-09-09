@@ -27,7 +27,7 @@ private:
 	Vector2 direction;
 	Vector2 verocity;
 	IntVector2 hitMapKeep = {};
-
+	bool isAlive;
 
 };
 

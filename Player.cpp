@@ -12,7 +12,7 @@ Player::Player() {
 	tmpPos_ = { 0.0f,0.0f };
 	tmpSpeed = 0.0f;
 	PlayerGH = Novice::LoadTexture("./Resource/Knight.png");
-
+	isAlive = true;
 }
 
 void Player::Update(char* keys) {
@@ -106,19 +106,28 @@ void Player::Update(char* keys) {
 	} else {
 		pos_.y = tmpPos_.y;
 	}
+	isAlive=hitBox_->PlayerHitBox(pos_, radius_, enemy_->GetPos_(), enemy_->GetRadius_());
 }
 
 void Player::Draw() {
-	Novice::DrawSprite(
-		static_cast<int>(pos_.x - (radius_ * 0.5f)), static_cast<int>(pos_.y - (radius_ * 0.5f)),
-		PlayerGH,
-		1.0f, 1.0f,
-		0.0f,
-		BLUE
-	);
+	if (isAlive){
+		Novice::DrawSprite(
+			static_cast<int>(pos_.x - (radius_ * 0.5f)), static_cast<int>(pos_.y - (radius_ * 0.5f)),
+			PlayerGH,
+			1.0f, 1.0f,
+			0.0f,
+			BLUE
+		);
+	}
 	Novice::DrawBox(
 		static_cast<int>(pos_.x - (radius_ * 0.5f)), static_cast<int>(pos_.y - (radius_ * 0.5f)),
 		static_cast<int>(radius_), static_cast<int>(radius_),
 		0.0f, BLACK, kFillModeWireFrame
 	);
+	if (isAlive == false) {
+		Novice::ScreenPrintf(0, 660, "isAlive=false");
+	} else {
+		Novice::ScreenPrintf(0, 660, "isAlive=true");
+	}
+
 }

@@ -48,4 +48,15 @@ IntVector2 HitBox::MapHitBox(Corners corners, int** Map, int returnMapA){
 	return returnMapB;
 }
 
+bool HitBox::PlayerHitBox(Vector2 player_pos_, float player_radius_, Vector2 pos_, float radius){
+	if (player_pos_.x + (player_radius_ * 0.5f) >= pos_.x - (radius * 0.5f) &&
+		pos_.x + (radius * 0.5f) >= player_pos_.x - (player_radius_ * 0.5f)) {
+		if (player_pos_.y + (player_radius_ * 0.5f) >= pos_.y - (radius * 0.5f) &&
+			pos_.y + (radius * 0.5f) >= player_pos_.y - (player_radius_ * 0.5f)) {
+			return false;
+		}
+	}
+	return true;
+}
+
 
