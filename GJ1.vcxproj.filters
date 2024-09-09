@@ -56,6 +56,12 @@
     <ClCompile Include="Enemy.cpp">
       <Filter>KamataEngine</Filter>
     </ClCompile>
+    <ClCompile Include="File_Read.cpp">
+      <Filter>KamataEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="File_White.cpp">
+      <Filter>KamataEngine</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="C:\KamataEngine\DirectXGame\audio\Audio.h">
@@ -136,5 +142,11 @@
     <ClInclude Include="Player.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="Enemy.h" />
+    <ClInclude Include="File_Read.h" />
+    <ClInclude Include="File_White.h" />
+    <ClInclude Include="nlohmann\json.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="SaveData\stageSave.json" />
   </ItemGroup>
 </Project>

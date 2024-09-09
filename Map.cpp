@@ -21,6 +21,13 @@ void Map::Draw() {
 					1.0f, 1.0f,
 					0.0f, 0xFFFFFFFF);
 			}
+			if (map[y][x] == 3){
+				Novice::DrawSprite(
+					blockSize * x, blockSize * y,
+					saveGH,
+					0.5, 0.5f,
+					0.0f, 0xFFFFFFFF);
+			}
 		}
 	}
 

@@ -1,5 +1,7 @@
 ﻿#include "Player.h"
 #include"Novice.h"
+#include"File_Read.h"
+#include"File_White.h"
 
 
 Player::Player() {
@@ -13,6 +15,7 @@ Player::Player() {
 	tmpSpeed = 0.0f;
 	PlayerGH = Novice::LoadTexture("./Resource/Knight.png");
 	isAlive = true;
+	firstStageSave = File_Read::Read_Save("SaveData/stageSave.json", "firstStage", "isSave", "first stage isClear:");
 }
 
 void Player::Update(char* keys) {
@@ -37,6 +40,10 @@ void Player::Update(char* keys) {
 	//移動量の決定
 	verocity.x = direction.x * float(speed_);
 	verocity.y = direction.y * float(speed_);
+
+	if (firstStageSave==true){
+		firstStageSave = File_White::White_Save("SaveData/stageSave.json", "firstStage","isClear", 1);
+	}
 
 	/*仮に移動させる
 	  playerの座標の代入をして
@@ -72,6 +79,43 @@ void Player::Update(char* keys) {
 	} else {
 		pos_.x = tmpPos_.x;
 	}
+
+	if (hitBox_->HitBox_(map->ppMap, corners_, 3)) {
+		hitMapKeep = hitBox_->MapHitBox(corners_, map->ppMap, 3);
+
+		if (pos_.x < static_cast<float>(hitMapKeep.x * blockSize + blockSize)) {
+			while (true) {
+
+
+				tmpPos_.x -= 0.1f;
+				corners_ = hitBox_->PosUpDate(tmpPos_, radius_, blockSize);
+				if (!hitBox_->HitBox_(map->ppMap, corners_, 3)) {
+					pos_.x = tmpPos_.x;
+					if (firstStageSave == false) {
+						firstStageSave = true;
+					}
+					break;
+				}
+			}
+		} else {
+			while (true) {
+				if (firstStageSave == false) {
+					firstStageSave = true;
+				}
+				tmpPos_.x += 0.1f;
+				corners_ = hitBox_->PosUpDate(tmpPos_, radius_, blockSize);
+				if (!hitBox_->HitBox_(map->ppMap, corners_, 3)) {
+					pos_.x = tmpPos_.x;
+					break;
+				}
+			}
+		}
+	} else {
+		pos_.x = tmpPos_.x;
+	}
+
+
+
 	/*仮に移動させる
 	  playerの座標の代入をして
 　	 仮に動いたｘの計算をする*/
@@ -106,6 +150,42 @@ void Player::Update(char* keys) {
 	} else {
 		pos_.y = tmpPos_.y;
 	}
+
+	if (hitBox_->HitBox_(map->ppMap, corners_, 3)) {
+		hitMapKeep = hitBox_->MapHitBox(corners_, map->ppMap, 3);
+
+		if (pos_.y < static_cast<float>(hitMapKeep.y * blockSize + blockSize)) {
+			while (true) {
+				if (firstStageSave==false) {
+					firstStageSave = true;
+				}
+				tmpPos_.y -= 0.1f;
+				corners_ = hitBox_->PosUpDate(tmpPos_, radius_, blockSize);
+				if (!hitBox_->HitBox_(map->ppMap, corners_, 3)) {
+					pos_.y = tmpPos_.y;
+					break;
+				}
+			}
+		} else {
+			while (true) {
+				if (firstStageSave == false) {
+					firstStageSave = true;
+				}
+				tmpPos_.y += 0.1f;
+				corners_ = hitBox_->PosUpDate(tmpPos_, radius_, blockSize);
+				if (!hitBox_->HitBox_(map->ppMap, corners_, 3)) {
+					pos_.y = tmpPos_.y;
+					break;
+				}
+			}
+		}
+	} else {
+		pos_.y = tmpPos_.y;
+	}
+
+
+
+
 	isAlive=hitBox_->PlayerHitBox(pos_, radius_, enemy_->GetPos_(), enemy_->GetRadius_());
 }
 
@@ -128,6 +208,11 @@ void Player::Draw() {
 		Novice::ScreenPrintf(0, 660, "isAlive=false");
 	} else {
 		Novice::ScreenPrintf(0, 660, "isAlive=true");
+	}
+	if (firstStageSave == false) {
+		Novice::ScreenPrintf(0, 700, "firstStageSave=false");
+	} else {
+		Novice::ScreenPrintf(0, 700, "firstStageSave=true");
 	}
 
 }

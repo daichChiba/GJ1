@@ -116,6 +116,8 @@ xcopy C:\KamataEngine\DirectXGame\Resources "$(OutDirFullPath)NoviceResources" /
     <ClCompile Include="C:\KamataEngine\DirectXGame\2d\ImGuiManager.cpp" />
     <ClCompile Include="C:\KamataEngine\Adapter\Novice.cpp" />
     <ClCompile Include="Enemy.cpp" />
+    <ClCompile Include="File_Read.cpp" />
+    <ClCompile Include="File_White.cpp" />
     <ClCompile Include="HitBox.cpp" />
     <ClCompile Include="IntVector2.cpp" />
     <ClCompile Include="main.cpp" />
@@ -153,11 +155,17 @@ xcopy C:\KamataEngine\DirectXGame\Resources "$(OutDirFullPath)NoviceResources" /
     <ClInclude Include="C:\KamataEngine\Adapter\Novice.h" />
     <ClInclude Include="Corners.h" />
     <ClInclude Include="Enemy.h" />
+    <ClInclude Include="File_Read.h" />
+    <ClInclude Include="File_White.h" />
     <ClInclude Include="HitBox.h" />
     <ClInclude Include="IntVector2.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="MapChipField.h" />
+    <ClInclude Include="nlohmann\json.hpp" />
     <ClInclude Include="Player.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="SaveData\stageSave.json" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
