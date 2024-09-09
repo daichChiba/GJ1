@@ -3,6 +3,7 @@
 #include "Vector2.h"
 #include "HitBox.h"
 #include"Map.h"
+#include "Enemy.h"
 
 class Player{
 public:
@@ -11,7 +12,7 @@ public:
 	void Draw();
 	HitBox* hitBox_ = new HitBox();
 	Map* map = new Map();
-
+	Enemy* enemy_ = new Enemy();
 
 
 

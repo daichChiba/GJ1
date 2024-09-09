@@ -6,7 +6,6 @@
 #include <sstream>
 #include <assert.h>
 #include "Player.h"
-#include "Enemy.h"
 
 
 const char kWindowTitle[] = "大脱獄";
@@ -20,7 +19,6 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 	// ライブラリの初期化
 	Novice::Initialize(kWindowTitle, 640, 720);
 	Player* player = new Player();
-	Enemy* enemy = new Enemy();
 
 
 	// キー入力結果を受け取る箱
@@ -42,7 +40,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 
 		player->Update(keys);
 		player->map->Update();
-		enemy->Update();
+		player->enemy_->Update();
 
 		///
 		/// ↑更新処理ここまで
@@ -54,7 +52,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 
 		player->Draw();
 		player->map->Draw();
-		enemy->Draw();
+		player->enemy_->Draw();
 
 		///
 		/// ↑描画処理ここまで
