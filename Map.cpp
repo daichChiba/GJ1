@@ -16,7 +16,7 @@ void Map::Draw() {
 		for (int x = 0; x < MapX_; x++) {
 			if (map[y][x] == 1) {
 				Novice::DrawSprite(
-					blockSize * x + 50, blockSize * y,
+					blockSize * x , blockSize * y,
 					blockGH,
 					1.0f, 1.0f,
 					0.0f, 0xFFFFFFFF);

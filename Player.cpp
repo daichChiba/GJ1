@@ -45,15 +45,15 @@ void Player::Update(char* keys) {
 	tmpPos_.x += verocity.x;
 
 	//当たり判定を取るために四辺の変数を代入する
-	corners_ = hitBox_->PosUpDate(tmpPos_, radius_ * 0.5f, blockSize);
+	corners_ = hitBox_->PosUpDate(tmpPos_, radius_, blockSize);
 
 	if (hitBox_->HitBox_(map->ppMap, corners_, 1)) {
 		hitMapKeep = hitBox_->MapHitBox(corners_, map->ppMap, 1);
 
-		if (pos_.x < static_cast<float>(hitMapKeep.x * blockSize + blockSize * 0.5f)) {
+		if (pos_.x < static_cast<float>(hitMapKeep.x * blockSize + blockSize)) {
 			while (true) {
-				tmpPos_.x -= 1;
-				corners_ = hitBox_->PosUpDate(tmpPos_, radius_ * 0.5f, blockSize);
+				tmpPos_.x -= 0.1f;
+				corners_ = hitBox_->PosUpDate(tmpPos_, radius_, blockSize);
 				if (!hitBox_->HitBox_(map->ppMap, corners_, 1)) {
 					pos_.x = tmpPos_.x;
 					break;
@@ -61,8 +61,8 @@ void Player::Update(char* keys) {
 			}
 		} else {
 			while (true) {
-				tmpPos_.x += 1;
-				corners_ = hitBox_->PosUpDate(tmpPos_, radius_ * 0.5f, blockSize);
+				tmpPos_.x += 0.1f;
+				corners_ = hitBox_->PosUpDate(tmpPos_, radius_, blockSize);
 				if (!hitBox_->HitBox_(map->ppMap, corners_, 1)) {
 					pos_.x = tmpPos_.x;
 					break;
@@ -79,15 +79,15 @@ void Player::Update(char* keys) {
 	tmpPos_.y += verocity.y;
 
 	//当たり判定を取るために四辺の変数を代入する
-	corners_ = hitBox_->PosUpDate(tmpPos_, radius_ * 0.5f, blockSize);
+	corners_ = hitBox_->PosUpDate(tmpPos_, radius_, blockSize);
 
 	if (hitBox_->HitBox_(map->ppMap, corners_, 1)) {
 		hitMapKeep = hitBox_->MapHitBox(corners_, map->ppMap, 1);
 
-		if (pos_.y < static_cast<float>(hitMapKeep.y * blockSize + blockSize * 0.5f)) {
+		if (pos_.y < static_cast<float>(hitMapKeep.y * blockSize + blockSize)) {
 			while (true) {
-				tmpPos_.y -= 1;
-				corners_ = hitBox_->PosUpDate(tmpPos_, radius_ * 0.5f, blockSize);
+				tmpPos_.y -= 0.1f;
+				corners_ = hitBox_->PosUpDate(tmpPos_, radius_, blockSize);
 				if (!hitBox_->HitBox_(map->ppMap, corners_, 1)) {
 					pos_.y = tmpPos_.y;
 					break;
@@ -95,8 +95,8 @@ void Player::Update(char* keys) {
 			}
 		} else {
 			while (true) {
-				tmpPos_.y += 1;
-				corners_ = hitBox_->PosUpDate(tmpPos_, radius_ * 0.5f, blockSize);
+				tmpPos_.y += 0.1f;
+				corners_ = hitBox_->PosUpDate(tmpPos_, radius_, blockSize);
 				if (!hitBox_->HitBox_(map->ppMap, corners_, 1)) {
 					pos_.y = tmpPos_.y;
 					break;
@@ -110,10 +110,15 @@ void Player::Update(char* keys) {
 
 void Player::Draw() {
 	Novice::DrawSprite(
-		static_cast<int>(pos_.x - (radius_ * 0.75f)) + 50, static_cast<int>(pos_.y - (radius_ * 0.75f)),
+		static_cast<int>(pos_.x - (radius_ * 0.5f)), static_cast<int>(pos_.y - (radius_ * 0.5f)),
 		PlayerGH,
 		1.0f, 1.0f,
 		0.0f,
 		BLUE
+	);
+	Novice::DrawBox(
+		static_cast<int>(pos_.x - (radius_ * 0.5f)), static_cast<int>(pos_.y - (radius_ * 0.5f)),
+		static_cast<int>(radius_), static_cast<int>(radius_),
+		0.0f, BLACK, kFillModeWireFrame
 	);
 }
