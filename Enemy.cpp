@@ -24,16 +24,16 @@ void Enemy::Update() {
 
 	if (isWallCollision == false) {
 		if (DirectionCount > 0) {
-			if (DirectionNumber == 1) {
+			if (DirectionNumber == 1/*右*/) {
 				direction.x += 1.0f;
 			}
-			if (DirectionNumber == 2) {
+			if (DirectionNumber == 2/*左*/) {
 				direction.x -= 1.0f;
 			}
-			if (DirectionNumber == 3) {
+			if (DirectionNumber == 3/*上*/) {
 				direction.y -= 1.0f;
 			}
-			if (DirectionNumber == 4) {
+			if (DirectionNumber == 4/*下*/) {
 				direction.y += 1.0f;
 			}
 		}
