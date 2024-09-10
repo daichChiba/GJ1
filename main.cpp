@@ -153,6 +153,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 		// フレームの終了
 		Novice::EndFrame();
 
+
 		// ESCキーが押されたらループを抜ける
 		if (preKeys[DIK_ESCAPE] == 0 && keys[DIK_ESCAPE] != 0) {
 			break;
@@ -161,5 +162,10 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 
 	// ライブラリの終了
 	Novice::Finalize();
+	// 動的メモリの解放
+	for (int i = 0; i < MAX_HEIGHT; i++) {
+		free(player->map->ppMap[i]);
+	}
+	free(player->map->ppMap);
 	return 0;
 }
