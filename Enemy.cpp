@@ -11,7 +11,7 @@ Enemy::Enemy() {
 	tmpSpeed = 0.0f;
 	EnemyGH = Novice::LoadTexture("./Resource/Knight.png");
 	isWallCollision = false;
-	DirectionCount = 120;
+	DirectionCount = 240;
 }
 
 void Enemy::Update() {
@@ -44,7 +44,7 @@ void Enemy::Update() {
 	}
 
 	if (DirectionCount<=0){
-		DirectionCount = 120;
+		DirectionCount = 240;
 		DirectionNumber = static_cast<int>(rand() % 4 + 1);
 	}
 

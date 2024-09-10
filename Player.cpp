@@ -13,7 +13,7 @@ Player::Player() {
 	corners_ = {};//corners_
 	tmpPos_ = { 0.0f,0.0f };
 	tmpSpeed = 0.0f;
-	PlayerGH = Novice::LoadTexture("./Resource/Knight.png");
+	PlayerGH = Novice::LoadTexture("./Resource/player.png");
 	isAlive = true;
 	isSave = false;
 	firstStageSave = File_Read::Read_Save("SaveData/stageSave.json", "firstStage", "isSave", "first stage isClear:");
@@ -26,17 +26,19 @@ void Player::Update(char* keys) {
 	direction.x = 0.0f;
 	direction.y = 0.0f;
 
-	if (keys[DIK_D]) {
-		direction.x += 1.0f;
-	}
-	if (keys[DIK_A]) {
-		direction.x -= 1.0f;
-	}
-	if (keys[DIK_W]) {
-		direction.y -= 1.0f;
-	}
-	if (keys[DIK_S]) {
-		direction.y += 1.0f;
+	if (isAlive){
+		if (keys[DIK_D]) {
+			direction.x += 1.0f;
+		}
+		if (keys[DIK_A]) {
+			direction.x -= 1.0f;
+		}
+		if (keys[DIK_W]) {
+			direction.y -= 1.0f;
+		}
+		if (keys[DIK_S]) {
+			direction.y += 1.0f;
+		}
 	}
 
 	//移動量の決定
