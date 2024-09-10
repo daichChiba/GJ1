@@ -14,8 +14,6 @@ public:
 	int** ppMap;
 
 
-
-
 	Vector2 GetMapPos(int mapNumber);
 
 private:
