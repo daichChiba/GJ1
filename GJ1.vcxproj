@@ -120,6 +120,7 @@ xcopy C:\KamataEngine\DirectXGame\Resources "$(OutDirFullPath)NoviceResources" /
     <ClCompile Include="File_White.cpp" />
     <ClCompile Include="HitBox.cpp" />
     <ClCompile Include="IntVector2.cpp" />
+    <ClCompile Include="LoadMapChip.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="MapChipField.cpp" />
@@ -159,6 +160,7 @@ xcopy C:\KamataEngine\DirectXGame\Resources "$(OutDirFullPath)NoviceResources" /
     <ClInclude Include="File_White.h" />
     <ClInclude Include="HitBox.h" />
     <ClInclude Include="IntVector2.h" />
+    <ClInclude Include="LoadMapChip.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="MapChipField.h" />
     <ClInclude Include="nlohmann\json.hpp" />
