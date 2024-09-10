@@ -59,4 +59,15 @@ bool HitBox::PlayerHitBox(Vector2 player_pos_, float player_radius_, Vector2 pos
 	return true;
 }
 
+bool HitBox::HitMouse_(Vector2 mouse, Vector2 pos_, Vector2 size_) {
+	if (mouse.x >= pos_.x - (size_.x * 0.5f) && mouse.x <= pos_.x + (size_.x * 0.5f)) {
+		if (mouse.y >= pos_.y - (size_.y * 0.5f) && mouse.y <= pos_.y + (size_.y * 0.5f)) {
+			/*if (Novice::IsTriggerMouse(0)) {
+				player->map->scene_ = Select;
+			}*/
+			return true;
+		}
+	}
+	return false;
+}
 

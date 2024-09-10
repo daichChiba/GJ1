@@ -29,6 +29,7 @@ private:
 	IntVector2 hitMapKeep = {};
 	bool isAlive;
 	bool firstStageSave;
+	bool isSave;
 
 };
 

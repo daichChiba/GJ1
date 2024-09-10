@@ -8,5 +8,7 @@ public:
 	bool HitBox_(int** map, Corners corners, int returnMapA);
 	IntVector2 MapHitBox(Corners corners, int** Map, int returnMapA);
 	bool PlayerHitBox(Vector2 player_pos_, float player_radius_, Vector2 pos_, float radius);
+	bool HitMouse_(Vector2 mouse, Vector2 pos_, Vector2 size_);
+
 };
 

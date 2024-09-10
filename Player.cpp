@@ -15,6 +15,7 @@ Player::Player() {
 	tmpSpeed = 0.0f;
 	PlayerGH = Novice::LoadTexture("./Resource/Knight.png");
 	isAlive = true;
+	isSave = false;
 	firstStageSave = File_Read::Read_Save("SaveData/stageSave.json", "firstStage", "isSave", "first stage isClear:");
 }
 
@@ -41,8 +42,8 @@ void Player::Update(char* keys) {
 	verocity.x = direction.x * float(speed_);
 	verocity.y = direction.y * float(speed_);
 
-	if (firstStageSave==true){
-		firstStageSave = File_White::White_Save("SaveData/stageSave.json", "firstStage","isClear", 1);
+	if (isSave==true){
+		firstStageSave = File_White::White_Save("SaveData/stageSave.json", "firstStage","isSave", 1);
 	}
 
 	/*仮に移動させる
@@ -91,16 +92,16 @@ void Player::Update(char* keys) {
 				corners_ = hitBox_->PosUpDate(tmpPos_, radius_, blockSize);
 				if (!hitBox_->HitBox_(map->ppMap, corners_, 3)) {
 					pos_.x = tmpPos_.x;
-					if (firstStageSave == false) {
-						firstStageSave = true;
+					if (isSave == false) {
+						isSave = true;
 					}
 					break;
 				}
 			}
 		} else {
 			while (true) {
-				if (firstStageSave == false) {
-					firstStageSave = true;
+				if (isSave == false) {
+					isSave = true;
 				}
 				tmpPos_.x += 0.1f;
 				corners_ = hitBox_->PosUpDate(tmpPos_, radius_, blockSize);
@@ -156,8 +157,8 @@ void Player::Update(char* keys) {
 
 		if (pos_.y < static_cast<float>(hitMapKeep.y * blockSize + blockSize)) {
 			while (true) {
-				if (firstStageSave==false) {
-					firstStageSave = true;
+				if (isSave==false) {
+					isSave = true;
 				}
 				tmpPos_.y -= 0.1f;
 				corners_ = hitBox_->PosUpDate(tmpPos_, radius_, blockSize);
@@ -168,8 +169,8 @@ void Player::Update(char* keys) {
 			}
 		} else {
 			while (true) {
-				if (firstStageSave == false) {
-					firstStageSave = true;
+				if (isSave == false) {
+					isSave = true;
 				}
 				tmpPos_.y += 0.1f;
 				corners_ = hitBox_->PosUpDate(tmpPos_, radius_, blockSize);

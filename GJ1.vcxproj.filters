@@ -145,6 +145,7 @@
     <ClInclude Include="File_Read.h" />
     <ClInclude Include="File_White.h" />
     <ClInclude Include="nlohmann\json.hpp" />
+    <ClInclude Include="Scene.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="SaveData\stageSave.json" />

@@ -163,6 +163,7 @@ xcopy C:\KamataEngine\DirectXGame\Resources "$(OutDirFullPath)NoviceResources" /
     <ClInclude Include="MapChipField.h" />
     <ClInclude Include="nlohmann\json.hpp" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="Scene.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="SaveData\stageSave.json" />
