@@ -45,8 +45,14 @@ void Player::Update(char* keys) {
 	verocity.x = direction.x * float(speed_);
 	verocity.y = direction.y * float(speed_);
 
+	if (firstStageSave){
+		isSave = true;
+	}
+
 	if (isSave==true){
-		firstStageSave = File_White::White_Save("SaveData/stageSave.json", "firstStage","isSave", 1);
+		if (firstStageSave == false){
+			firstStageSave = File_White::White_Save("SaveData/stageSave.json", "firstStage", "isSave", 1);
+		}
 	}
 
 	if (isAlive==false){
@@ -211,7 +217,7 @@ void Player::Draw() {
 			PlayerGH,
 			1.0f, 1.0f,
 			0.0f,
-			BLUE
+			WHITE
 		);
 	}
 	Novice::DrawBox(

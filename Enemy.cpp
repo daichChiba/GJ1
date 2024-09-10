@@ -9,7 +9,7 @@ Enemy::Enemy() {
 	corners_ = {};//corners_
 	tmpPos_ = { 0.0f,0.0f };
 	tmpSpeed = 0.0f;
-	EnemyGH = Novice::LoadTexture("./Resource/Knight.png");
+	EnemyGH = Novice::LoadTexture("./Resource/police.png");
 	isWallCollision = false;
 	DirectionCount = 240;
 }
