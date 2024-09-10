@@ -17,6 +17,7 @@ Player::Player() {
 	isAlive = true;
 	isSave = false;
 	firstStageSave = File_Read::Read_Save("SaveData/stageSave.json", "firstStage", "isSave", "first stage isClear:");
+	DeathCountor = 60;
 }
 
 void Player::Update(char* keys) {
@@ -44,6 +45,18 @@ void Player::Update(char* keys) {
 
 	if (isSave==true){
 		firstStageSave = File_White::White_Save("SaveData/stageSave.json", "firstStage","isSave", 1);
+	}
+
+	if (isAlive==false){
+		DeathCountor -= 1;
+	}
+
+	if (DeathCountor<=0){
+		isAlive = true;
+		DeathCountor = 60;
+		if (isSave==true){
+			pos_ = map->GetMapPos(3);
+		}
 	}
 
 	/*仮に移動させる
@@ -184,10 +197,9 @@ void Player::Update(char* keys) {
 		pos_.y = tmpPos_.y;
 	}
 
-
-
-
-	isAlive=hitBox_->PlayerHitBox(pos_, radius_, enemy_->GetPos_(), enemy_->GetRadius_());
+	if (hitBox_->PlayerHitBox(pos_, radius_, enemy_->GetPos_(), enemy_->GetRadius_())){
+		isAlive = false;
+	}
 }
 
 void Player::Draw() {
@@ -210,10 +222,11 @@ void Player::Draw() {
 	} else {
 		Novice::ScreenPrintf(0, 660, "isAlive=true");
 	}
-	if (firstStageSave == false) {
-		Novice::ScreenPrintf(0, 700, "firstStageSave=false");
+	if (isSave == false) {
+		Novice::ScreenPrintf(0, 700, "isSave=false");
 	} else {
-		Novice::ScreenPrintf(0, 700, "firstStageSave=true");
+		Novice::ScreenPrintf(0, 700, "isSave=true");
 	}
+	Novice::ScreenPrintf(100, 660, "DeathCountor=%d",DeathCountor);
 
 }

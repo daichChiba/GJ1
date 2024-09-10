@@ -32,3 +32,18 @@ void Map::Draw() {
 	}
 
 }
+
+Vector2 Map::GetMapPos(int mapNumber){
+	Vector2 pos;
+	for (int y = 0; y < MapY_; y++){
+		for (int x = 0; x < MapX_; x++){
+			if (map[y][x]== mapNumber){
+				pos.x = static_cast<float>(blockSize * x);
+				pos.y = static_cast<float>(blockSize * y);
+			}
+		}
+	}
+	return pos;
+}
+
+

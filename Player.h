@@ -30,6 +30,7 @@ private:
 	bool isAlive;
 	bool firstStageSave;
 	bool isSave;
+	int DeathCountor;
 
 };
 

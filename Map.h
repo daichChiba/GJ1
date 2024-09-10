@@ -1,5 +1,6 @@
 #pragma once
 #include"Novice.h"
+#include"Vector2.h"
 const int MapY_ = 20;
 const int MapX_ = 20;
 const int blockSize = 32;
@@ -35,6 +36,8 @@ public:
 	{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
 	{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}
 	};
+
+	Vector2 GetMapPos(int mapNumber);
 
 private:
 	int blockGH = Novice::LoadTexture("./Resource/block.png");
