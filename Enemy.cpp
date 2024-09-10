@@ -15,7 +15,7 @@ Enemy::Enemy() {
 }
 
 void Enemy::Update() {
-	map->Update();
+	map->Update(scene);
 	//向きの初期化
 	direction.x = 0.0f;
 	direction.y = 0.0f;

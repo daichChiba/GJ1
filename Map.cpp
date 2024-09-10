@@ -7,8 +7,10 @@ Map::Map() {
 	}
 }
 
-void Map::Update() {
-	loadMapChip_->MapChipLood(ppMap, "./Resource/Csv/stage_1.csv");
+void Map::Update(Scene_ scene) {
+	if (scene==stage_1){
+		loadMapChip_->MapChipLood(ppMap, "./Resource/Csv/stage_1.csv");
+	}
 
 
 

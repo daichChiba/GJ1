@@ -2,6 +2,7 @@
 #include"Novice.h"
 #include"Vector2.h"
 #include"LoadMapChip.h"
+#include "Scene.h"
 const int MapY_ = 20;
 const int MapX_ = 20;
 const int blockSize = 32;
@@ -9,7 +10,7 @@ class Map{
 public:
 	Map();
 	LoadMapChip* loadMapChip_ = new LoadMapChip();
-	void Update();
+	void Update(Scene_ scene);
 	void Draw();
 	int** ppMap;
 

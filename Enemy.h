@@ -3,6 +3,8 @@
 #include "Vector2.h"
 #include "HitBox.h"
 #include"Map.h"
+#include "Scene.h"
+
 
 class Enemy{
 public:
@@ -11,6 +13,7 @@ public:
 	void Draw();
 	HitBox* hitBox_ = new HitBox();
 	Map* map = new Map();
+	Scene_ scene = titel;
 
 	Vector2 GetPos_() { return pos_; }
 	float GetRadius_() { return radius_; }

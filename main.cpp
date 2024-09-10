@@ -62,24 +62,24 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 
 		mouse = Vector2(static_cast<float>(mouseX), static_cast<float>(mouseY));
 
-		switch (scene) {
+		switch (player->enemy_->scene) {
 		case titel:
 			if (player->hitBox_->HitMouse_(mouse, selectButton.pos, selectButton.size)){
 				if (Novice::IsTriggerMouse(0)){
-					scene = Select;
+					player->enemy_->scene = Select;
 				}
 			}
 			break;
 		case Select:
 			if (player->hitBox_->HitMouse_(mouse,firstButton.pos,firstButton.size)){
 				if (Novice::IsTriggerMouse(0)) {
-					scene = stage_1;
+					player->enemy_->scene = stage_1;
 				}
 			}
 			break;
 		case stage_1:
 			player->Update(keys);
-			player->map->Update();
+			player->map->Update(player->enemy_->scene);
 			player->enemy_->Update();
 			break;
 		case gameClear:
@@ -101,7 +101,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 
 
 
-		switch (scene) {
+		switch (player->enemy_->scene) {
 		case titel:
 			Novice::DrawQuad(
 				int(selectButton.pos.x - selectButton.size.x * 0.5f), int(selectButton.pos.y - selectButton.size.y * 0.5f),

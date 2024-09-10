@@ -21,7 +21,7 @@ Player::Player() {
 }
 
 void Player::Update(char* keys) {
-	map->Update();
+	map->Update(enemy_->scene);
 	//向きの初期化
 	direction.x = 0.0f;
 	direction.y = 0.0f;
