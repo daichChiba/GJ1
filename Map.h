@@ -20,6 +20,7 @@ public:
 private:
 	int blockGH = Novice::LoadTexture("./Resource/brickBlock.png");
 	int saveGH = Novice::LoadTexture("./Resource/Returnbutton.png");
+	int
 
 };
 
