@@ -18,7 +18,7 @@ const char kWindowTitle[] = "大脱獄";
 int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 
 	// ライブラリの初期化
-	Novice::Initialize(kWindowTitle, 640, 720);
+	Novice::Initialize(kWindowTitle, 672, 720);
 	Player* player = new Player();
 
 	Vector2 mouse = { 0.0f,0.0f };
