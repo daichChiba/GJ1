@@ -120,6 +120,21 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 	int WhiteGH_ = Novice::LoadTexture("white1x1.png");
 	int mouseGH = Novice::LoadTexture("./Resource/tejou.png");
 	int clearGH = Novice::LoadTexture("./Resource/Star.png");
+	int number1GH=Novice::LoadTexture("./Resource/1.png");
+	int number2GH =Novice::LoadTexture("./Resource/2.png");
+	int number3GH=Novice::LoadTexture("./Resource/3.png");
+	int number4GH=Novice::LoadTexture("./Resource/4.png");
+	int number5GH=Novice::LoadTexture("./Resource/5.png");
+	int number6GH=Novice::LoadTexture("./Resource/6.png");
+	int number7GH=Novice::LoadTexture("./Resource/7.png");
+	int number8GH=Novice::LoadTexture("./Resource/8.png");
+	int number9GH=Novice::LoadTexture("./Resource/9.png");
+	int number10GH=Novice::LoadTexture("./Resource/10.png");
+	int number11GH=Novice::LoadTexture("./Resource/11.png");
+	int number12GH=Novice::LoadTexture("./Resource/12.png");
+	int number13GH=Novice::LoadTexture("./Resource/13.png");
+	int number14GH=Novice::LoadTexture("./Resource/14.png");
+	int number15GH=Novice::LoadTexture("./Resource/15.png");
 
 
 	// キー入力結果を受け取る箱
@@ -189,6 +204,8 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 			isClear[12] = File_Read::Read_Save("SaveData/stageClear.json", "thirteenthStage", "isClear", "thirteenth stage isClear:");
 			isClear[13] = File_Read::Read_Save("SaveData/stageClear.json", "fourteenthStage", "isClear", "fourteenth stage isClear:");
 			isClear[14] = File_Read::Read_Save("SaveData/stageClear.json", "fifteenthStage", "isClear", "fifteenth stage isClear:");
+
+
 			if (player->hitBox_->HitMouse_(mouse, Stage_1st.pos, Stage_1st.size)) {
 				if (Novice::IsTriggerMouse(0)) {
 					player->enemy_->scene = stage_1;
@@ -438,21 +455,21 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 			break;
 		case Select:
 			Novice::DrawSprite(0, 0, player->map->GetBackGroundGH(), 1.0f, 1.0f, 0.0f, WHITE);
-			DrawButton(Stage_1st, WhiteGH_);
-			DrawButton(Stage_2nd, WhiteGH_);
-			DrawButton(Stage_3rd, WhiteGH_);
-			DrawButton(Stage_4th, WhiteGH_);
-			DrawButton(Stage_5th, WhiteGH_);
-			DrawButton(Stage_6th, WhiteGH_);
-			DrawButton(Stage_7th, WhiteGH_);
-			DrawButton(Stage_8th, WhiteGH_);
-			DrawButton(Stage_9th, WhiteGH_);
-			DrawButton(Stage_10th, WhiteGH_);
-			DrawButton(Stage_11th, WhiteGH_);
-			DrawButton(Stage_12th, WhiteGH_);
-			DrawButton(Stage_13th, WhiteGH_);
-			DrawButton(Stage_14th, WhiteGH_);
-			DrawButton(Stage_15th, WhiteGH_);
+			DrawButton(Stage_1st, number1GH);
+			DrawButton(Stage_2nd, number2GH);
+			DrawButton(Stage_3rd, number3GH);
+			DrawButton(Stage_4th, number4GH);
+			DrawButton(Stage_5th, number5GH);
+			DrawButton(Stage_6th, number6GH);
+			DrawButton(Stage_7th, number7GH);
+			DrawButton(Stage_8th, number8GH);
+			DrawButton(Stage_9th, number9GH);
+			DrawButton(Stage_10th, number10GH);
+			DrawButton(Stage_11th, number11GH);
+			DrawButton(Stage_12th, number12GH);
+			DrawButton(Stage_13th, number13GH);
+			DrawButton(Stage_14th, number14GH);
+			DrawButton(Stage_15th, number15GH);
 
 			for (int i = 0; i < 15; i++) {
 				if (isClear[i] == true) {
