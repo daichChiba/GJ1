@@ -19,7 +19,7 @@ public:
 	int GetTmpScene() { return tmpScene; }
 	
 	//Enemy* enemy_2 = new Enemy();
-
+	bool GetIsSave(){ return isSave; }
 private:
 	int PlayerGH;
 	Vector2 pos_;

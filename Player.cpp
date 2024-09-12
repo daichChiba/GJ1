@@ -71,7 +71,11 @@ void Player::Update(char* keys) {
 	}
 
 	if (isAlive==false){
-		DeathCountor -= 1;
+		enemy_->scene = gameOver;
+		isAlive = true;
+		if (isSave==true){
+			pos_ = map->GetMapPos(3);
+		}
 	}
 
 	if (DeathCountor<=0){

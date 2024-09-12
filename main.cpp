@@ -278,6 +278,11 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 			}
 			break;
 		case gameOver:
+			if (player->hitBox_->HitMouse_(mouse, titelButton.pos, titelButton.size)) {
+				if (Novice::IsTriggerMouse(0)) {
+					player->enemy_->scene = titel;
+				}
+			}
 			break;
 		}
 
@@ -357,12 +362,12 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 			//}
 			break;
 		case stage_1:
-			player->map->Draw();
+			player->map->Draw(player->GetIsSave());
 			player->Draw();
 			player->enemy_->Draw();
 			break;
 		case stage_2:
-			player->map->Draw();
+			player->map->Draw(player->GetIsSave());
 			player->Draw();
 			player->enemy_->Draw();
 			break;
@@ -412,6 +417,16 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 
 			break;
 		case gameOver:
+			Novice::DrawQuad(
+				int(titelButton.pos.x - titelButton.size.x * 0.5f), int(titelButton.pos.y - titelButton.size.y * 0.5f),
+				int(titelButton.pos.x + titelButton.size.x * 0.5f), int(titelButton.pos.y - titelButton.size.y * 0.5f),
+				int(titelButton.pos.x - titelButton.size.x * 0.5f), int(titelButton.pos.y + titelButton.size.y * 0.5f),
+				int(titelButton.pos.x + titelButton.size.x * 0.5f), int(titelButton.pos.y + titelButton.size.y * 0.5f),
+				0, 0,
+				int(titelButton.size.x), int(titelButton.size.y),
+				WhiteGH_,
+				BLACK
+			);
 			break;
 
 		}

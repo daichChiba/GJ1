@@ -6,21 +6,24 @@
 const int MapY_ = 21;
 const int MapX_ = 21;
 const int blockSize = 32;
+
 class Map{
 public:
 	Map();
 	LoadMapChip* loadMapChip_ = new LoadMapChip();
 	void Update(Scene_ scene);
-	void Draw();
+	void Draw(int isSave);
 	int** ppMap;
 	void ResetMap(int**& map);
+
 
 	Vector2 GetMapPos(int mapNumber);
 	int GetBackGroundGH() { return backGroundGH; }
 
 private:
 	int blockGH = Novice::LoadTexture("./Resource/brickBlock.png");
-	int noSaveGH = Novice::LoadTexture("./Resource/Returnbutton.png");
+	int SaveGH= Novice::LoadTexture("./Resource/flagRed.png");
+	int noSaveGH = Novice::LoadTexture("./Resource/flag.png");
 	int backGroundGH = Novice::LoadTexture("./Resource/backGround.png");
 	int GoalGH = Novice::LoadTexture("./Resource/door.png");
 

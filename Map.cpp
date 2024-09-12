@@ -18,7 +18,7 @@ void Map::Update(Scene_ scene) {
 
 }
 
-void Map::Draw() {
+void Map::Draw(int isSave) {
 	Novice::DrawSprite(0, 0, backGroundGH, 1.0f, 1.0f, 0.0f, WHITE);
 	for (int y = 0; y < MapY_; y++) {
 		for (int x = 0; x < MapX_; x++) {
@@ -30,11 +30,19 @@ void Map::Draw() {
 					0.0f, 0xFFFFFFFF);
 			}
 			if (ppMap[y][x] == 3) {
-				Novice::DrawSprite(
-					blockSize * x, blockSize * y,
-					noSaveGH,
-					0.5, 0.5f,
-					0.0f, 0xFFFFFFFF);
+				if (isSave){
+					Novice::DrawSprite(
+						blockSize * x, blockSize * y,
+						SaveGH,
+						0.5, 0.5f,
+						0.0f, 0xFFFFFFFF);
+				} else{
+					Novice::DrawSprite(
+						blockSize * x, blockSize * y,
+						noSaveGH,
+						0.5, 0.5f,
+						0.0f, 0xFFFFFFFF);
+				}
 			}
 			if (ppMap[y][x] == 4) {
 				Novice::DrawSprite(
