@@ -4,7 +4,7 @@
 using json = nlohmann::json;
 using namespace std;
 
-bool File_Read::Read_Save(const char* filename_, const char* stageName, const char* isClear, const char* stageCount_){
+bool File_Read::Read_Save(const char* filename_, const char* stageName, const char* isChar, const char* stageCount_){
     string fileName = filename_;
 
     ifstream reading_file(fileName);
@@ -25,11 +25,11 @@ bool File_Read::Read_Save(const char* filename_, const char* stageName, const ch
     reading_file.close();
 
     string stageName_ = stageName;
-    string isClear_ = isClear;
+    string isChar_ = isChar;
     string stageCount = stageCount_;
 
     try {
-        bool StageClear = m_json.at(stageName_).at(isClear_).get<int>() == 1;
+        bool StageClear = m_json.at(stageName_).at(isChar_).get<int>() == 1;
         // 変数の値を出力
         cout << stageCount << (StageClear ? "Yes" : "No") << endl;
         return StageClear;

@@ -1,7 +1,6 @@
 ﻿#include "Player.h"
 #include"Novice.h"
-#include"File_Read.h"
-#include"File_White.h"
+
 
 
 Player::Player() {
@@ -16,13 +15,21 @@ Player::Player() {
 	PlayerGH = Novice::LoadTexture("./Resource/player.png");
 	isAlive = true;
 	isSave = false;
-	firstStageSave = File_Read::Read_Save("SaveData/savePoint.json", "firstStage", "isSave", "first stage isClear:");
+	StageSave = 0;
 	DeathCountor = 60;
 	isClear = false;
+	tmpScene = 0;
 }
 
 void Player::Update(char* keys) {
 	map->Update(enemy_->scene);
+	if (enemy_->scene == stage_1) {
+		StageSave = File_Read::Read_Save("SaveData/savePoint.json", "firstStage", "isSave", "first stage isSave:");
+	}
+	if (enemy_->scene == stage_1) {
+		StageSave = File_Read::Read_Save("SaveData/savePoint.json", "secondStage", "isSave", "second stage isSave:");
+	}
+
 	//向きの初期化
 	direction.x = 0.0f;
 	direction.y = 0.0f;
@@ -46,15 +53,20 @@ void Player::Update(char* keys) {
 	verocity.x = direction.x * float(speed_);
 	verocity.y = direction.y * float(speed_);
 
-	if (firstStageSave){
+	if (StageSave){
 		isSave = true;
 	}
 
 	if (isSave==true){
 		//map->SetMap(map->ppMap, 3, 4);
 
-		if (firstStageSave == false){
-			firstStageSave = File_White::White_Save("SaveData/savePoint.json", "firstStage", "isSave", 1);
+		if (StageSave == false){
+			if (enemy_->scene == stage_1) {
+				StageSave = File_White::White_Save("SaveData/savePoint.json", "firstStage", "isSave", 1);
+			}
+			if (enemy_->scene == stage_2) {
+				StageSave = File_White::White_Save("SaveData/savePoint.json", "secondStage", "isSave", 1);
+			}
 		}
 	}
 
@@ -71,8 +83,16 @@ void Player::Update(char* keys) {
 	}
 
 	if (isClear==true){
-		enemy_->scene = gameClear;
+		if (enemy_->scene == stage_1) {
+			tmpScene = stage_1;
+		}
+		if (enemy_->scene == stage_2) {
+			tmpScene = stage_2;
+		}
 
+		
+		
+		enemy_->scene = gameClear;
 	}
 
 	/*仮に移動させる
@@ -247,37 +267,8 @@ void Player::Update(char* keys) {
 		}
 	} else {
 		pos_.y = tmpPos_.y;
-	}	if (hitBox_->HitBox_(map->ppMap, corners_, 4)) {
-		hitMapKeep = hitBox_->MapHitBox(corners_, map->ppMap, 4);
-
-		if (pos_.y < static_cast<float>(hitMapKeep.y * blockSize + blockSize)) {
-			while (true) {
-				if (isClear == false) {
-					isClear = true;
-				}
-				tmpPos_.y -= 0.1f;
-				corners_ = hitBox_->PosUpDate(tmpPos_, radius_, blockSize);
-				if (!hitBox_->HitBox_(map->ppMap, corners_, 4)) {
-					pos_.y = tmpPos_.y;
-					break;
-				}
-			}
-		} else {
-			while (true) {
-				if (isClear == false) {
-					isClear = true;
-				}
-				tmpPos_.y += 0.1f;
-				corners_ = hitBox_->PosUpDate(tmpPos_, radius_, blockSize);
-				if (!hitBox_->HitBox_(map->ppMap, corners_, 4)) {
-					pos_.y = tmpPos_.y;
-					break;
-				}
-			}
-		}
-	} else {
-		pos_.y = tmpPos_.y;
 	}
+
 
 
 
@@ -317,5 +308,14 @@ void Player::Draw() {
 		Novice::ScreenPrintf(200, 700, "isClear=false");
 	} else {
 		Novice::ScreenPrintf(200, 700, "isClear=true");
+	}
+}
+
+void Player::clearSave(bool isClear_){
+	if (tmpScene == stage_1) {
+		isClear_ = File_White::White_Save("SaveData/stageClear.json", "firstStage", "isClear", 1);
+	}
+	if (tmpScene == stage_2) {
+		isClear_ = File_White::White_Save("SaveData/stageClear.json", "secondStage", "isClear", 1);
 	}
 }

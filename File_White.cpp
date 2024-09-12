@@ -4,7 +4,7 @@
 using json = nlohmann::json;
 using namespace std;
 
-bool File_White::White_Save(const char* filename_, const char* stageName, const char* Name,const int isClear){
+bool File_White::White_Save(const char* filename_, const char* stageName, const char* Name,const int isNumber){
     // JSONオブジェクトの作成
     json m_json;
 
@@ -20,7 +20,7 @@ bool File_White::White_Save(const char* filename_, const char* stageName, const 
         input_file.close();
     }
 
-    m_json[stageName] = { {Name,isClear} };
+    m_json[stageName] = { {Name,isNumber} };
 
     // JSONデータをファイルに書き込む
     ofstream writing_file(filename_, ios::out);

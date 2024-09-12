@@ -6,7 +6,7 @@ enum Scene_ {
 	/*rule,*/
 	Select,
 	stage_1,
-	//stage_2,
+	stage_2,
 	//stage_3,
 	gameClear,
 	gameOver

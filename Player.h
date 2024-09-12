@@ -4,6 +4,8 @@
 #include "HitBox.h"
 #include"Map.h"
 #include "Enemy.h"
+#include"File_Read.h"
+#include"File_White.h"
 
 class Player{
 public:
@@ -13,8 +15,10 @@ public:
 	HitBox* hitBox_ = new HitBox();
 	Map* map = new Map();
 	Enemy* enemy_ = new Enemy();
-
-
+	void clearSave(bool isClear_);
+	int GetTmpScene() { return tmpScene; }
+	
+	//Enemy* enemy_2 = new Enemy();
 
 private:
 	int PlayerGH;
@@ -28,10 +32,11 @@ private:
 	Vector2 verocity;
 	IntVector2 hitMapKeep = {};
 	bool isAlive;
-	bool firstStageSave;
+	bool StageSave;
 	bool isSave;
 	int DeathCountor;
 	bool isClear;
+	int tmpScene;
 
 };
 

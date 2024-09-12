@@ -168,7 +168,8 @@ xcopy C:\KamataEngine\DirectXGame\Resources "$(OutDirFullPath)NoviceResources" /
     <ClInclude Include="Scene.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="SaveData\stageSave.json" />
+    <None Include="SaveData\savePoint.json" />
+    <None Include="SaveData\stageClear.json" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

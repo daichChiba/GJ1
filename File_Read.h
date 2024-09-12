@@ -4,6 +4,6 @@
 #include "nlohmann/json.hpp"
 class File_Read{
 public:
-	static bool Read_Save(const char* filename_, const char* stageName, const char* isClear, const char* stageCount_);
+	static bool Read_Save(const char* filename_, const char* stageName, const char* isChar, const char* stageCount_);
 };
 

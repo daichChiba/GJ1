@@ -152,6 +152,7 @@
     <ClInclude Include="LoadMapChip.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="SaveData\stageSave.json" />
+    <None Include="SaveData\savePoint.json" />
+    <None Include="SaveData\stageClear.json" />
   </ItemGroup>
 </Project>
