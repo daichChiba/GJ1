@@ -156,6 +156,7 @@ void Player::Update(char* keys) {
 		} else{
 			pos_ = { 400.0f,64.0f };
 		}
+		enemy_->SetPos_(Vector2{ 400.0f, 128.0f });
 	}
 
 	if (DeathCountor<=0){

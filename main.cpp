@@ -23,7 +23,11 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 
 	Vector2 mouse = { 0.0f,0.0f };
 	Button selectButton{
-	Vector2(450.0f,700.0f),//高さ
+	Vector2(140.0f,700.0f),//高さ
+	Vector2(200.0f,80.0f)//幅
+	};
+	Button AllResetButton{
+	Vector2(340.0f,700.0f),//高さ
 	Vector2(200.0f,80.0f)//幅
 	};
 	Button titelButton{
@@ -145,6 +149,27 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 			if (player->hitBox_->HitMouse_(mouse, selectButton.pos, selectButton.size)) {
 				if (Novice::IsTriggerMouse(0)) {
 					player->enemy_->scene = Select;
+				}
+			}
+			if (player->hitBox_->HitMouse_(mouse,AllResetButton.pos,AllResetButton.size)){
+				if (Novice::IsTriggerMouse(0)){
+					player->enemy_->scene = Select;
+					isClear[0] = File_White::White_Save("SaveData/stageClear.json", "firstStage", "isClear", 0);
+					isClear[1] = File_White::White_Save("SaveData/stageClear.json", "secondStage", "isClear", 0);
+					isClear[2]= File_White::White_Save("SaveData/stageClear.json", "thirdStage", "isClear", 0);
+					isClear[3]= File_White::White_Save("SaveData/stageClear.json", "fourthStage", "isClear", 0);
+					isClear[4]= File_White::White_Save("SaveData/stageClear.json", "fifthStage", "isClear", 0);
+					isClear[5]= File_White::White_Save("SaveData/stageClear.json", "sixthStage", "isClear", 0);
+					isClear[6]= File_White::White_Save("SaveData/stageClear.json", "seventhStage", "isClear", 0);
+					isClear[7]= File_White::White_Save("SaveData/stageClear.json", "eighthStage", "isClear", 0);
+					isClear[8]= File_White::White_Save("SaveData/stageClear.json", "ninthStage", "isClear", 0);
+					isClear[9]= File_White::White_Save("SaveData/stageClear.json", "tenthStage", "isClear", 0);
+					isClear[10]= File_White::White_Save("SaveData/stageClear.json", "eleventhStage", "isClear", 0);
+					isClear[11]= File_White::White_Save("SaveData/stageClear.json", "twelfthStage", "isClear", 0);
+					isClear[12]= File_White::White_Save("SaveData/stageClear.json", "thirteenthStage", "isClear", 0);
+					isClear[13]= File_White::White_Save("SaveData/stageClear.json", "fourteenthStage", "isClear", 0);
+					isClear[14]= File_White::White_Save("SaveData/stageClear.json", "fifteenthStage", "isClear", 0);
+
 				}
 			}
 			break;
@@ -399,6 +424,16 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 				int(selectButton.size.x), int(selectButton.size.y),
 				WhiteGH_,
 				BLACK
+			);
+			Novice::DrawQuad(
+				int(AllResetButton.pos.x - AllResetButton.size.x * 0.5f), int(AllResetButton.pos.y - AllResetButton.size.y * 0.5f),
+				int(AllResetButton.pos.x + AllResetButton.size.x * 0.5f), int(AllResetButton.pos.y - AllResetButton.size.y * 0.5f),
+				int(AllResetButton.pos.x - AllResetButton.size.x * 0.5f), int(AllResetButton.pos.y + AllResetButton.size.y * 0.5f),
+				int(AllResetButton.pos.x + AllResetButton.size.x * 0.5f), int(AllResetButton.pos.y + AllResetButton.size.y * 0.5f),
+				0, 0,
+				int(AllResetButton.size.x), int(AllResetButton.size.y),
+				WhiteGH_,
+				BLUE
 			);
 			break;
 		case Select:
