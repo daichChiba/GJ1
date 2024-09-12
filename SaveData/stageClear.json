@@ -1,8 +1,8 @@
 {
     "firstStage": {
-        "isClear": 0
+        "isClear": 1
     },
     "secondStage": {
-        "isClear": 0
+        "isClear": 1
     }
 }

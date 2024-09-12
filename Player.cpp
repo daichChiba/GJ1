@@ -75,6 +75,8 @@ void Player::Update(char* keys) {
 		isAlive = true;
 		if (isSave==true){
 			pos_ = map->GetMapPos(3);
+		} else{
+			pos_ = { 400.0f,64.0f };
 		}
 	}
 
@@ -107,6 +109,7 @@ void Player::Update(char* keys) {
 		}
 		isClear = false;
 		isSave = false;
+		//isAlive = true;
 	}
 
 	/*仮に移動させる
