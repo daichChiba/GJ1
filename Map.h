@@ -16,11 +16,13 @@ public:
 
 
 	Vector2 GetMapPos(int mapNumber);
+	void SetMap(int** map, int mapNumber,int changeNumber);
 
 private:
 	int blockGH = Novice::LoadTexture("./Resource/brickBlock.png");
-	int saveGH = Novice::LoadTexture("./Resource/Returnbutton.png");
-	int
+	int noSaveGH = Novice::LoadTexture("./Resource/Returnbutton.png");
+	int backGroundGH = Novice::LoadTexture("./Resource/backGround.png");
+	int GoalGH = Novice::LoadTexture("./Resource/door.png");
 
 };
 

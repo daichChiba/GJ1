@@ -17,6 +17,7 @@ void Map::Update(Scene_ scene) {
 }
 
 void Map::Draw() {
+	Novice::DrawSprite(0, 0, backGroundGH, 1.0f, 1.0f, 0.0f, WHITE);
 	for (int y = 0; y < MapY_; y++) {
 		for (int x = 0; x < MapX_; x++) {
 			if (ppMap[y][x] == 1) {
@@ -26,13 +27,21 @@ void Map::Draw() {
 					1.0f, 1.0f,
 					0.0f, 0xFFFFFFFF);
 			}
-			if (ppMap[y][x] == 3){
+			if (ppMap[y][x] == 3) {
 				Novice::DrawSprite(
 					blockSize * x, blockSize * y,
-					saveGH,
+					noSaveGH,
 					0.5, 0.5f,
 					0.0f, 0xFFFFFFFF);
 			}
+			if (ppMap[y][x] == 4) {
+				Novice::DrawSprite(
+					blockSize * x, blockSize * y,
+					GoalGH,
+					1.0f, 1.0f,
+					0.0f, 0xFFFFFFFF);
+			}
+
 		}
 	}
 
@@ -49,6 +58,16 @@ Vector2 Map::GetMapPos(int mapNumber){
 		}
 	}
 	return pos;
+}
+
+void Map::SetMap(int** map, int mapNumber, int changeNumber){
+	for (int y = 0; y < MapY_; y++) {
+		for (int x = 0; x < MapX_; x++) {
+			if (map[y][x] == mapNumber) {
+				map[y][x] = changeNumber;
+			}
+		}
+	}
 }
 
 

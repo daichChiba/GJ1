@@ -18,6 +18,7 @@ Player::Player() {
 	isSave = false;
 	firstStageSave = File_Read::Read_Save("SaveData/stageSave.json", "firstStage", "isSave", "first stage isClear:");
 	DeathCountor = 60;
+	isClear = false;
 }
 
 void Player::Update(char* keys) {
@@ -50,6 +51,8 @@ void Player::Update(char* keys) {
 	}
 
 	if (isSave==true){
+		//map->SetMap(map->ppMap, 3, 4);
+
 		if (firstStageSave == false){
 			firstStageSave = File_White::White_Save("SaveData/stageSave.json", "firstStage", "isSave", 1);
 		}
@@ -65,6 +68,10 @@ void Player::Update(char* keys) {
 		if (isSave==true){
 			pos_ = map->GetMapPos(3);
 		}
+	}
+
+	if (isClear==true){
+		enemy_->scene = gameClear;
 	}
 
 	/*仮に移動させる
@@ -136,6 +143,41 @@ void Player::Update(char* keys) {
 		pos_.x = tmpPos_.x;
 	}
 
+	//goalの当たり判定
+	if (hitBox_->HitBox_(map->ppMap, corners_, 4)) {
+		hitMapKeep = hitBox_->MapHitBox(corners_, map->ppMap, 4);
+
+		if (pos_.x < static_cast<float>(hitMapKeep.x * blockSize + blockSize)) {
+			while (true) {
+
+
+				tmpPos_.x -= 0.1f;
+				corners_ = hitBox_->PosUpDate(tmpPos_, radius_, blockSize);
+				if (!hitBox_->HitBox_(map->ppMap, corners_, 4)) {
+					pos_.x = tmpPos_.x;
+					if (isClear == false) {
+						isClear = true;
+					}
+					break;
+				}
+			}
+		} else {
+			while (true) {
+				if (isClear == false) {
+					isClear = true;
+				}
+				tmpPos_.x += 0.1f;
+				corners_ = hitBox_->PosUpDate(tmpPos_, radius_, blockSize);
+				if (!hitBox_->HitBox_(map->ppMap, corners_, 4)) {
+					pos_.x = tmpPos_.x;
+					break;
+				}
+			}
+		}
+	} else {
+		pos_.x = tmpPos_.x;
+	}
+
 
 
 	/*仮に移動させる
@@ -173,29 +215,60 @@ void Player::Update(char* keys) {
 		pos_.y = tmpPos_.y;
 	}
 
-	if (hitBox_->HitBox_(map->ppMap, corners_, 3)) {
-		hitMapKeep = hitBox_->MapHitBox(corners_, map->ppMap, 3);
+	//クリアの当たり判定
+	if (hitBox_->HitBox_(map->ppMap, corners_, 4)) {
+		hitMapKeep = hitBox_->MapHitBox(corners_, map->ppMap, 4);
 
 		if (pos_.y < static_cast<float>(hitMapKeep.y * blockSize + blockSize)) {
 			while (true) {
-				if (isSave==false) {
-					isSave = true;
+				if (isClear == false) {
+					isClear = true;
 				}
 				tmpPos_.y -= 0.1f;
 				corners_ = hitBox_->PosUpDate(tmpPos_, radius_, blockSize);
-				if (!hitBox_->HitBox_(map->ppMap, corners_, 3)) {
+				if (!hitBox_->HitBox_(map->ppMap, corners_, 4)) {
 					pos_.y = tmpPos_.y;
 					break;
 				}
 			}
 		} else {
 			while (true) {
-				if (isSave == false) {
-					isSave = true;
+				if (isClear == false) {
+					isClear = true;
 				}
 				tmpPos_.y += 0.1f;
 				corners_ = hitBox_->PosUpDate(tmpPos_, radius_, blockSize);
-				if (!hitBox_->HitBox_(map->ppMap, corners_, 3)) {
+				if (!hitBox_->HitBox_(map->ppMap, corners_, 4)) {
+					pos_.y = tmpPos_.y;
+					break;
+				}
+			}
+		}
+	} else {
+		pos_.y = tmpPos_.y;
+	}	if (hitBox_->HitBox_(map->ppMap, corners_, 4)) {
+		hitMapKeep = hitBox_->MapHitBox(corners_, map->ppMap, 4);
+
+		if (pos_.y < static_cast<float>(hitMapKeep.y * blockSize + blockSize)) {
+			while (true) {
+				if (isClear == false) {
+					isClear = true;
+				}
+				tmpPos_.y -= 0.1f;
+				corners_ = hitBox_->PosUpDate(tmpPos_, radius_, blockSize);
+				if (!hitBox_->HitBox_(map->ppMap, corners_, 4)) {
+					pos_.y = tmpPos_.y;
+					break;
+				}
+			}
+		} else {
+			while (true) {
+				if (isClear == false) {
+					isClear = true;
+				}
+				tmpPos_.y += 0.1f;
+				corners_ = hitBox_->PosUpDate(tmpPos_, radius_, blockSize);
+				if (!hitBox_->HitBox_(map->ppMap, corners_, 4)) {
 					pos_.y = tmpPos_.y;
 					break;
 				}
@@ -204,6 +277,9 @@ void Player::Update(char* keys) {
 	} else {
 		pos_.y = tmpPos_.y;
 	}
+
+
+
 
 	if (hitBox_->PlayerHitBox(pos_, radius_, enemy_->GetPos_(), enemy_->GetRadius_())){
 		isAlive = false;
@@ -236,5 +312,9 @@ void Player::Draw() {
 		Novice::ScreenPrintf(0, 700, "isSave=true");
 	}
 	Novice::ScreenPrintf(100, 660, "DeathCountor=%d",DeathCountor);
-
+	if (isClear == false) {
+		Novice::ScreenPrintf(200, 700, "isClear=false");
+	} else {
+		Novice::ScreenPrintf(200, 700, "isClear=true");
+	}
 }

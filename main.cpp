@@ -127,8 +127,8 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 		);
 			break;
 		case stage_1:
-			player->Draw();
 			player->map->Draw();
+			player->Draw();
 			player->enemy_->Draw();
 			break;
 		case gameClear:

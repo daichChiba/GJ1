@@ -61,7 +61,7 @@ void Enemy::Update() {
 
 	//当たり判定を取るために四辺の変数を代入する
 	corners_ = hitBox_->PosUpDate(tmpPos_, radius_, blockSize);
-
+	//ブロック当たり判定
 	if (hitBox_->HitBox_(map->ppMap, corners_, 1)) {
 		hitMapKeep = hitBox_->MapHitBox(corners_, map->ppMap, 1);
 

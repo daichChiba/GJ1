@@ -24,8 +24,7 @@ bool HitBox::HitBox_(int** map, Corners corners, int returnMapA) {
 		map[corners.LeftBottom_.y][corners.LeftBottom_.x] == returnMapA ||
 		map[corners.RightBottom_.y][corners.RightBottom_.x] == returnMapA) {
 		return 1;
-	}
-	else {
+	}else {
 		return 0;
 	}
 }
