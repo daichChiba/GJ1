@@ -13,10 +13,9 @@ public:
 	void Update(Scene_ scene);
 	void Draw();
 	int** ppMap;
-
+	void ResetMap(int**& map);
 
 	Vector2 GetMapPos(int mapNumber);
-	void SetMap(int** map, int mapNumber,int changeNumber);
 
 private:
 	int blockGH = Novice::LoadTexture("./Resource/brickBlock.png");

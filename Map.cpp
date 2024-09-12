@@ -1,4 +1,4 @@
-#include "Map.h"
+﻿#include "Map.h"
 
 Map::Map() {
 	ppMap = (int**)malloc(MAX_HEIGHT * sizeof(int*));
@@ -49,6 +49,20 @@ void Map::Draw() {
 
 }
 
+void Map::ResetMap(int**& map){
+	// 既存のマップのメモリを解放
+	for (int i = 0; i < MAX_HEIGHT; i++) {
+		free(map[i]);
+	}
+	free(map);
+
+	// 新しいマップ用にメモリを再確保
+	map = (int**)malloc(MAX_HEIGHT * sizeof(int*));
+	for (int i = 0; i < MAX_HEIGHT; i++) {
+		map[i] = (int*)malloc(MAX_WIDTH * sizeof(int));
+	}
+}
+
 Vector2 Map::GetMapPos(int mapNumber){
 	Vector2 pos;
 	for (int y = 0; y < MapY_; y++){
@@ -62,14 +76,6 @@ Vector2 Map::GetMapPos(int mapNumber){
 	return pos;
 }
 
-void Map::SetMap(int** map, int mapNumber, int changeNumber){
-	for (int y = 0; y < MapY_; y++) {
-		for (int x = 0; x < MapX_; x++) {
-			if (map[y][x] == mapNumber) {
-				map[y][x] = changeNumber;
-			}
-		}
-	}
-}
+
 
 

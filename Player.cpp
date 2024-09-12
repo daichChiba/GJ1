@@ -90,9 +90,17 @@ void Player::Update(char* keys) {
 			tmpScene = stage_2;
 		}
 
-		
+		map->ResetMap(map->ppMap);
 		
 		enemy_->scene = gameClear;
+		pos_ = { 400.0f,64.0f };
+		if (enemy_->scene == stage_1) {
+			StageSave = File_White::White_Save("SaveData/savePoint.json", "firstStage", "isSave", 0);
+		}
+		if (enemy_->scene == stage_2) {
+			StageSave = File_White::White_Save("SaveData/savePoint.json", "secondStage", "isSave", 0);
+		}
+		isClear = false;
 	}
 
 	/*仮に移動させる
