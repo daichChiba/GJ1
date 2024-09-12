@@ -35,16 +35,16 @@ void Player::Update(char* keys) {
 	direction.y = 0.0f;
 
 	if (isAlive){
-		if (keys[DIK_D]) {
+		if (keys[DIK_D]||keys[DIK_RIGHT]) {
 			direction.x += 1.0f;
 		}
-		if (keys[DIK_A]) {
+		if (keys[DIK_A]||keys[DIK_LEFT]) {
 			direction.x -= 1.0f;
 		}
-		if (keys[DIK_W]) {
+		if (keys[DIK_W]||keys[DIK_UP]) {
 			direction.y -= 1.0f;
 		}
-		if (keys[DIK_S]) {
+		if (keys[DIK_S]||keys[DIK_DOWN]) {
 			direction.y += 1.0f;
 		}
 	}
@@ -94,6 +94,7 @@ void Player::Update(char* keys) {
 		
 		enemy_->scene = gameClear;
 		pos_ = { 400.0f,64.0f };
+		enemy_->SetPos_(Vector2{ 400.0f, 128.0f });
 		if (enemy_->scene == stage_1) {
 			StageSave = File_White::White_Save("SaveData/savePoint.json", "firstStage", "isSave", 0);
 		}
@@ -101,6 +102,7 @@ void Player::Update(char* keys) {
 			StageSave = File_White::White_Save("SaveData/savePoint.json", "secondStage", "isSave", 0);
 		}
 		isClear = false;
+		isSave = false;
 	}
 
 	/*仮に移動させる
@@ -243,6 +245,39 @@ void Player::Update(char* keys) {
 	} else {
 		pos_.y = tmpPos_.y;
 	}
+	//クリアの当たり判定
+	if (hitBox_->HitBox_(map->ppMap, corners_, 3)) {
+		hitMapKeep = hitBox_->MapHitBox(corners_, map->ppMap, 3);
+
+		if (pos_.y < static_cast<float>(hitMapKeep.y * blockSize + blockSize)) {
+			while (true) {
+				if (isSave == false) {
+					isSave = true;
+				}
+				tmpPos_.y -= 0.1f;
+				corners_ = hitBox_->PosUpDate(tmpPos_, radius_, blockSize);
+				if (!hitBox_->HitBox_(map->ppMap, corners_, 3)) {
+					pos_.y = tmpPos_.y;
+					break;
+				}
+			}
+		} else {
+			while (true) {
+				if (isSave == false) {
+					isSave = true;
+				}
+				tmpPos_.y += 0.1f;
+				corners_ = hitBox_->PosUpDate(tmpPos_, radius_, blockSize);
+				if (!hitBox_->HitBox_(map->ppMap, corners_, 3)) {
+					pos_.y = tmpPos_.y;
+					break;
+				}
+			}
+		}
+	} else {
+		pos_.y = tmpPos_.y;
+	}
+
 
 	//クリアの当たり判定
 	if (hitBox_->HitBox_(map->ppMap, corners_, 4)) {

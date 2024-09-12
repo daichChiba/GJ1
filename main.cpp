@@ -31,65 +31,65 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 	Vector2(200.0f,80.0f)//幅
 	};
 
-	
+
 	Button Stage_1st{
-	Vector2(64.0f+64.0f,64.0f),//高さ
+	Vector2(144.0f,85.33f),//高さ
 	Vector2(64.0f,64.0f)//幅
 	};
 	Button Stage_2nd{
-	Vector2(160.0f + 64.0f,64.0f),//高さ
+	Vector2(320.0f,85.33f),//高さ
 	Vector2(64.0f,64.0f)//幅
 	};
 	Button Stage_3rd{
-	Vector2(256.0f + 64.0f,64.0f),//高さ
+	Vector2(496.0f,85.33f),//高さ
 	Vector2(64.0f,64.0f)//幅
 	};
 	Button Stage_4th{
-	Vector2(64.0f+64.0f,160.0f + 64.0f),//高さ
+	Vector2(144.0f,202.67f),//高さ
 	Vector2(64.0f,64.0f)//幅
 	};
 	Button Stage_5th{
-	Vector2(160.0f + 64.0f,160.0f + 64.0f),//高さ
+	Vector2(320.0f,202.67f),//高さ
 	Vector2(64.0f,64.0f)//幅
 	};
 	Button Stage_6th{
-	Vector2(256.0f + 64.0f,160.0f + 64.0f),//高さ
+	Vector2(496.0f,202.67f),//高さ
 	Vector2(64.0f,64.0f)//幅
 	};
 	Button Stage_7th{
-	Vector2(64.0f + 64.0f,256.0f + 64.0f),//高さ
+	Vector2(144.0f,320.0f),//高さ
 	Vector2(64.0f,64.0f)//幅
 	};
 	Button Stage_8th{
-	Vector2(160.0f + 64.0f,256.0f + 64.0f),//高さ
+	Vector2(320.0f,320.0f),//高さ
 	Vector2(64.0f,64.0f)//幅
 	};
 	Button Stage_9th{
-	Vector2(256.0f + 64.0f,256.0f + 64.0f),//高さ
+	Vector2(496.0f,320.0f),//高さ
 	Vector2(64.0f,64.0f)//幅
 	};
 	Button Stage_10th{
-	Vector2(64.0f + 64.0f,352.0f + 64.0f),//高さ
+	Vector2(144.0f,437.33f),//高さ
 	Vector2(64.0f,64.0f)//幅
 	};
 	Button Stage_11th{
-	Vector2(160.0f + 64.0f,352.0f + 64.0f),//高さ
+	Vector2(320.0f,437.33f),//高さ
 	Vector2(64.0f,64.0f)//幅
 	};
 	Button Stage_12th{
-	Vector2(256.0f + 64.0f,352.0f + 64.0f),//高さ
+	Vector2(496.0f,437.33f),//高さ
 	Vector2(64.0f,64.0f)//幅
 	};
 	Button Stage_13th{
-	Vector2(64.0f + 64.0f,448.0f + 64.0f),//高さ
+	Vector2(144.0f,554.67f),//高さ
 	Vector2(64.0f,64.0f)//幅
 	};
 	Button Stage_14th{
-	Vector2(160.0f + 64.0f,448.0f + 64.0f),//高さ
+	Vector2(320.0f,554.67f),//高さ
 	Vector2(64.0f,64.0f)//幅
 	};
 	Button Stage_15th{
-	Vector2(256.0f + 64.0f,448.0f + 64.0f),//高さ
+	Vector2(496.0f,554.67f),//高さ
 	Vector2(64.0f,64.0f)//幅
 	};
 
@@ -97,8 +97,8 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 	for (int y = 0; y < 5; y++) {
 		for (int x = 0; x < 3; x++) {
 			int index = y * 3 + x;
-			ClearBotton[index].pos.x = 96.0f * x + 64.0f;
-			ClearBotton[index].pos.y = 96.0f * y + 64.0f + 64.0f;
+			ClearBotton[index].pos.x = 176.0f * x + 144.0f;
+			ClearBotton[index].pos.y = 118.0f * y + 144.0f;
 			ClearBotton[index].size.x = 32.0f;
 			ClearBotton[index].size.y = 32.0f;
 		}
@@ -107,8 +107,6 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 
 	bool isClear[15];
 
-	isClear[0] = File_Read::Read_Save("SaveData/stageClear.json", "firstStage", "isClear", "first stage isClear:");
-	isClear[1] = File_Read::Read_Save("SaveData/stageClear.json", "secondStage", "isClear", "second stage isClear:");
 
 	Scene_ scene;
 	scene = titel;
@@ -117,6 +115,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 	int mouseY = static_cast<int>(mouse.y);
 	int WhiteGH_ = Novice::LoadTexture("white1x1.png");
 	int mouseGH = Novice::LoadTexture("./Resource/tejou.png");
+	int clearGH = Novice::LoadTexture("./Resource/Star.png");
 
 
 	// キー入力結果を受け取る箱
@@ -150,6 +149,9 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 			}
 			break;
 		case Select:
+			isClear[0] = File_Read::Read_Save("SaveData/stageClear.json", "firstStage", "isClear", "first stage isClear:");
+			isClear[1] = File_Read::Read_Save("SaveData/stageClear.json", "secondStage", "isClear", "second stage isClear:");
+
 			if (player->hitBox_->HitMouse_(mouse, Stage_1st.pos, Stage_1st.size)) {
 				if (Novice::IsTriggerMouse(0)) {
 					player->enemy_->scene = stage_1;
@@ -305,6 +307,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 			);
 			break;
 		case Select:
+			Novice::DrawSprite(0, 0, player->map->GetBackGroundGH(), 1.0f, 1.0f, 0.0f, WHITE);
 			DrawButton(Stage_1st, WhiteGH_);
 			DrawButton(Stage_2nd, WhiteGH_);
 			DrawButton(Stage_3rd, WhiteGH_);
@@ -334,18 +337,18 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 						int(ClearBotton[i].pos.y + ClearBotton[i].size.y * 0.5f),
 						0, 0,
 						int(ClearBotton[i].size.x), int(ClearBotton[i].size.y),
-						WhiteGH_,
+						clearGH,
 						WHITE
 					);
-					Novice::DrawBox(
-						static_cast<int>(ClearBotton[i].pos.x - ClearBotton[i].size.x * 0.5f),
-						static_cast<int>(ClearBotton[i].pos.y - ClearBotton[i].size.y * 0.5f),
-						static_cast<int>(ClearBotton[i].size.x),
-						static_cast<int>(ClearBotton[i].size.y),
-						0.0f, BLACK, kFillModeWireFrame
-					);
-				}
 
+				}
+				Novice::DrawBox(
+					static_cast<int>(ClearBotton[i].pos.x - (ClearBotton[i].size.x * 0.5f)),
+					static_cast<int>(ClearBotton[i].pos.y - (ClearBotton[i].size.y * 0.5f)),
+					static_cast<int>(ClearBotton[i].size.x),
+					static_cast<int>(ClearBotton[i].size.y),
+					0.0f, BLACK, kFillModeWireFrame
+				);
 			}
 			//if (isClick[0] == true) {
 			//	Novice::ScreenPrintf(0, 680, "isClick[0]=true");
@@ -400,6 +403,13 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 				WhiteGH_,
 				BLACK
 			);
+			if (player->GetTmpScene() == stage_1) {
+				Novice::ScreenPrintf(200, 680, "tmpScene=stage_1");
+			}
+			if (player->GetTmpScene()==stage_2) {
+				Novice::ScreenPrintf(200, 680, "tmpScene=stage_2");
+			}
+
 			break;
 		case gameOver:
 			break;

@@ -16,6 +16,7 @@ public:
 	void ResetMap(int**& map);
 
 	Vector2 GetMapPos(int mapNumber);
+	int GetBackGroundGH() { return backGroundGH; }
 
 private:
 	int blockGH = Novice::LoadTexture("./Resource/brickBlock.png");

@@ -89,6 +89,35 @@ void Enemy::Update() {
 	} else {
 		pos_.x = tmpPos_.x;
 	}
+
+	if (hitBox_->HitBox_(map->ppMap, corners_, 3)) {
+		hitMapKeep = hitBox_->MapHitBox(corners_, map->ppMap, 3);
+
+		if (pos_.x < static_cast<float>(hitMapKeep.x * blockSize + blockSize)) {
+			while (true) {
+
+
+				tmpPos_.x -= 0.1f;
+				corners_ = hitBox_->PosUpDate(tmpPos_, radius_, blockSize);
+				if (!hitBox_->HitBox_(map->ppMap, corners_, 3)) {
+					pos_.x = tmpPos_.x;
+					break;
+				}
+			}
+		} else {
+			while (true) {
+				tmpPos_.x += 0.1f;
+				corners_ = hitBox_->PosUpDate(tmpPos_, radius_, blockSize);
+				if (!hitBox_->HitBox_(map->ppMap, corners_, 3)) {
+					pos_.x = tmpPos_.x;
+					break;
+				}
+			}
+		}
+	} else {
+		pos_.x = tmpPos_.x;
+	}
+
 	/*仮に移動させる
 	  playerの座標の代入をして
 　	 仮に動いたｘの計算をする*/

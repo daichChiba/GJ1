@@ -17,6 +17,7 @@ public:
 
 	Vector2 GetPos_() { return pos_; }
 	float GetRadius_() { return radius_; }
+	Vector2 SetPos_(Vector2 pos) { return pos_ = pos; }
 
 
 private:
