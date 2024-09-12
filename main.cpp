@@ -137,6 +137,8 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 	int number15GH=Novice::LoadTexture("./Resource/15.png");
 
 	int titelGH = Novice::LoadTexture("./Resource/titel.png");
+	int GameOverGH = Novice::LoadTexture("./Resource/GameOver.png");
+	int GameClearGH = Novice::LoadTexture("./Resource/GameClear.png");
 
 
 	// キー入力結果を受け取る箱
@@ -434,7 +436,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 
 		switch (player->enemy_->scene) {
 		case titel:
-			Novice::DrawSprite(0, 0, titelGH, 1.0f, 1.0f, 0.0f, WHITE);
+			SpriteDraw(Vector2(0.0f, 0.0f), titelGH, WHITE);
 			DrawButton(selectButton, WhiteGH_, BLACK);
 			DrawButton(AllResetButton, WhiteGH_, BLUE);
 			break;
@@ -551,28 +553,17 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 			player->enemy_->Draw();
 			break;
 		case gameClear:
+			SpriteDraw(Vector2{ 0,0 }, GameClearGH, WHITE);
 			DrawButton(titelButton, WhiteGH_,BLACK);
-
-			if (player->GetTmpScene() == stage_1) {
-				Novice::ScreenPrintf(200, 680, "tmpScene=stage_1");
-			}
-			if (player->GetTmpScene()==stage_2) {
-				Novice::ScreenPrintf(200, 680, "tmpScene=stage_2");
-			}
-
 			break;
 		case gameOver:
+			SpriteDraw(Vector2{ 0,0 }, GameOverGH, WHITE);
 			DrawButton(titelButton, WhiteGH_, BLACK);
 			break;
 
 		}
-		Novice::DrawSprite(
-			static_cast<int>(mouse.x - 16.0f), static_cast<int>(mouse.y - 16.0f),
-			mouseGH,
-			1, 1,
-			0.0f,
-			WHITE
-		);
+		SpriteDraw(Vector2{ (mouse.x - 16.0f),(mouse.y - 16.0f) }, mouseGH, WHITE);
+
 		if (player->enemy_->scene == titel) {
 			Novice::ScreenPrintf(200, 680, "scene=titel");
 		}

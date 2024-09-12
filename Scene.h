@@ -32,3 +32,4 @@ struct Button {
 
 void DrawButton(Button button, int Gh);
 void DrawButton(Button button, int Gh,int color);
+void SpriteDraw(Vector2 pos, int Gh, int color);
