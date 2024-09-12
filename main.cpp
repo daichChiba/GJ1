@@ -136,6 +136,8 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 	int number14GH=Novice::LoadTexture("./Resource/14.png");
 	int number15GH=Novice::LoadTexture("./Resource/15.png");
 
+	int titelGH = Novice::LoadTexture("./Resource/titel.png");
+
 
 	// キー入力結果を受け取る箱
 	char keys[256] = { 0 };
@@ -432,26 +434,9 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 
 		switch (player->enemy_->scene) {
 		case titel:
-			Novice::DrawQuad(
-				int(selectButton.pos.x - selectButton.size.x * 0.5f), int(selectButton.pos.y - selectButton.size.y * 0.5f),
-				int(selectButton.pos.x + selectButton.size.x * 0.5f), int(selectButton.pos.y - selectButton.size.y * 0.5f),
-				int(selectButton.pos.x - selectButton.size.x * 0.5f), int(selectButton.pos.y + selectButton.size.y * 0.5f),
-				int(selectButton.pos.x + selectButton.size.x * 0.5f), int(selectButton.pos.y + selectButton.size.y * 0.5f),
-				0, 0,
-				int(selectButton.size.x), int(selectButton.size.y),
-				WhiteGH_,
-				BLACK
-			);
-			Novice::DrawQuad(
-				int(AllResetButton.pos.x - AllResetButton.size.x * 0.5f), int(AllResetButton.pos.y - AllResetButton.size.y * 0.5f),
-				int(AllResetButton.pos.x + AllResetButton.size.x * 0.5f), int(AllResetButton.pos.y - AllResetButton.size.y * 0.5f),
-				int(AllResetButton.pos.x - AllResetButton.size.x * 0.5f), int(AllResetButton.pos.y + AllResetButton.size.y * 0.5f),
-				int(AllResetButton.pos.x + AllResetButton.size.x * 0.5f), int(AllResetButton.pos.y + AllResetButton.size.y * 0.5f),
-				0, 0,
-				int(AllResetButton.size.x), int(AllResetButton.size.y),
-				WhiteGH_,
-				BLUE
-			);
+			Novice::DrawSprite(0, 0, titelGH, 1.0f, 1.0f, 0.0f, WHITE);
+			DrawButton(selectButton, WhiteGH_, BLACK);
+			DrawButton(AllResetButton, WhiteGH_, BLUE);
 			break;
 		case Select:
 			Novice::DrawSprite(0, 0, player->map->GetBackGroundGH(), 1.0f, 1.0f, 0.0f, WHITE);
@@ -473,20 +458,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 
 			for (int i = 0; i < 15; i++) {
 				if (isClear[i] == true) {
-					Novice::DrawQuad(
-						int(ClearBotton[i].pos.x - ClearBotton[i].size.x * 0.5f),
-						int(ClearBotton[i].pos.y - ClearBotton[i].size.y * 0.5f),
-						int(ClearBotton[i].pos.x + ClearBotton[i].size.x * 0.5f),
-						int(ClearBotton[i].pos.y - ClearBotton[i].size.y * 0.5f),
-						int(ClearBotton[i].pos.x - ClearBotton[i].size.x * 0.5f),
-						int(ClearBotton[i].pos.y + ClearBotton[i].size.y * 0.5f),
-						int(ClearBotton[i].pos.x + ClearBotton[i].size.x * 0.5f),
-						int(ClearBotton[i].pos.y + ClearBotton[i].size.y * 0.5f),
-						0, 0,
-						int(ClearBotton[i].size.x), int(ClearBotton[i].size.y),
-						clearGH,
-						WHITE
-					);
+					DrawButton(ClearBotton[i], clearGH);
 
 				}
 				Novice::DrawBox(
@@ -579,16 +551,8 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 			player->enemy_->Draw();
 			break;
 		case gameClear:
-			Novice::DrawQuad(
-				int(titelButton.pos.x - titelButton.size.x * 0.5f), int(titelButton.pos.y - titelButton.size.y * 0.5f),
-				int(titelButton.pos.x + titelButton.size.x * 0.5f), int(titelButton.pos.y - titelButton.size.y * 0.5f),
-				int(titelButton.pos.x - titelButton.size.x * 0.5f), int(titelButton.pos.y + titelButton.size.y * 0.5f),
-				int(titelButton.pos.x + titelButton.size.x * 0.5f), int(titelButton.pos.y + titelButton.size.y * 0.5f),
-				0, 0,
-				int(titelButton.size.x), int(titelButton.size.y),
-				WhiteGH_,
-				BLACK
-			);
+			DrawButton(titelButton, WhiteGH_,BLACK);
+
 			if (player->GetTmpScene() == stage_1) {
 				Novice::ScreenPrintf(200, 680, "tmpScene=stage_1");
 			}
@@ -598,16 +562,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 
 			break;
 		case gameOver:
-			Novice::DrawQuad(
-				int(titelButton.pos.x - titelButton.size.x * 0.5f), int(titelButton.pos.y - titelButton.size.y * 0.5f),
-				int(titelButton.pos.x + titelButton.size.x * 0.5f), int(titelButton.pos.y - titelButton.size.y * 0.5f),
-				int(titelButton.pos.x - titelButton.size.x * 0.5f), int(titelButton.pos.y + titelButton.size.y * 0.5f),
-				int(titelButton.pos.x + titelButton.size.x * 0.5f), int(titelButton.pos.y + titelButton.size.y * 0.5f),
-				0, 0,
-				int(titelButton.size.x), int(titelButton.size.y),
-				WhiteGH_,
-				BLACK
-			);
+			DrawButton(titelButton, WhiteGH_, BLACK);
 			break;
 
 		}

@@ -31,3 +31,4 @@ struct Button {
 
 
 void DrawButton(Button button, int Gh);
+void DrawButton(Button button, int Gh,int color);
