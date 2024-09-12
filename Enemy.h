@@ -8,7 +8,7 @@
 
 class Enemy{
 public:
-	Enemy();
+	Enemy(Vector2 pos);
 	void Update();
 	void Draw();
 	HitBox* hitBox_ = new HitBox();

@@ -1,7 +1,7 @@
 ﻿#include "Enemy.h"
 
-Enemy::Enemy() {
-	pos_ = { 400.0f,128.0f };//pos_
+Enemy::Enemy(Vector2 pos) {
+	pos_ = pos;//pos_
 	verocity = { 0.0f,0.0f };//verocity
 	direction = { 0.0f, 0.0f };//direction
 	radius_ = 32.0f;//radius_

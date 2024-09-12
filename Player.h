@@ -14,7 +14,7 @@ public:
 	void Draw();
 	HitBox* hitBox_ = new HitBox();
 	Map* map = new Map();
-	Enemy* enemy_ = new Enemy();
+	Enemy* enemy_ = new Enemy(Vector2{ 400.0f, 128.0f });
 	void clearSave(bool isClear_);
 	int GetTmpScene() { return tmpScene; }
 	
