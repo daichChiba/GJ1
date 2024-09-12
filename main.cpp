@@ -149,9 +149,21 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 			}
 			break;
 		case Select:
-			isClear[0] = File_Read::Read_Save("SaveData/stageClear.json", "firstStage", "isClear", "first stage isClear:");
-			isClear[1] = File_Read::Read_Save("SaveData/stageClear.json", "secondStage", "isClear", "second stage isClear:");
-
+			isClear[0]	= File_Read::Read_Save("SaveData/stageClear.json", "firstStage", "isClear", "first stage isClear:");
+			isClear[1]	= File_Read::Read_Save("SaveData/stageClear.json", "secondStage", "isClear", "second stage isClear:");
+			isClear[2]	= File_Read::Read_Save("SaveData/stageClear.json", "thirdStage", "isClear", "third stage isClear:");
+			isClear[3]	= File_Read::Read_Save("SaveData/stageClear.json", "fourthStage", "isClear", "fourth stage isClear:");
+			isClear[4]	= File_Read::Read_Save("SaveData/stageClear.json", "fifthStage", "isClear", "fifth stage isClear:");
+			isClear[5]	= File_Read::Read_Save("SaveData/stageClear.json", "sixthStage", "isClear", "sixth stage isClear:");
+			isClear[6]	= File_Read::Read_Save("SaveData/stageClear.json", "seventhStage", "isClear", "seventh stage isClear:");
+			isClear[7]	= File_Read::Read_Save("SaveData/stageClear.json", "eighthStage", "isClear", "eighth stage isClear:");
+			isClear[8]	= File_Read::Read_Save("SaveData/stageClear.json", "ninthStage", "isClear", "ninth stage isClear:");
+			isClear[9]	= File_Read::Read_Save("SaveData/stageClear.json", "tenthStage", "isClear", "tenth stage isClear:");
+			isClear[10] = File_Read::Read_Save("SaveData/stageClear.json", "eleventhStage", "isClear", "eleventh stage isClear:");
+			isClear[11] = File_Read::Read_Save("SaveData/stageClear.json", "twelfthStage", "isClear", "twelfth stage isClear:");
+			isClear[12] = File_Read::Read_Save("SaveData/stageClear.json", "thirteenthStage", "isClear", "thirteenth stage isClear:");
+			isClear[13] = File_Read::Read_Save("SaveData/stageClear.json", "fourteenthStage", "isClear", "fourteenth stage isClear:");
+			isClear[14] = File_Read::Read_Save("SaveData/stageClear.json", "fifteenthStage", "isClear", "fifteenth stage isClear:");
 			if (player->hitBox_->HitMouse_(mouse, Stage_1st.pos, Stage_1st.size)) {
 				if (Novice::IsTriggerMouse(0)) {
 					player->enemy_->scene = stage_1;
@@ -239,30 +251,69 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 			player->enemy_->Update();
 			break;
 		case stage_3:
+			player->map->Update(player->enemy_->scene);
+			player->Update(keys);
+			player->enemy_->Update();
 			break;
 		case stage_4:
+			player->map->Update(player->enemy_->scene);
+			player->Update(keys);
+			player->enemy_->Update();
 			break;
 		case stage_5:
+			player->map->Update(player->enemy_->scene);
+			player->Update(keys);
+			player->enemy_->Update();
 			break;
 		case stage_6:
+			player->map->Update(player->enemy_->scene);
+			player->Update(keys);
+			player->enemy_->Update();
 			break;
 		case stage_7:
+			player->map->Update(player->enemy_->scene);
+			player->Update(keys);
+			player->enemy_->Update();
 			break;
 		case stage_8:
+			player->map->Update(player->enemy_->scene);
+			player->Update(keys);
+			player->enemy_->Update();
 			break;
 		case stage_9:
+			player->map->Update(player->enemy_->scene);
+			player->Update(keys);
+			player->enemy_->Update();
 			break;
 		case stage_10:
+			player->map->Update(player->enemy_->scene);
+			player->Update(keys);
+			player->enemy_->Update();
 			break;
 		case stage_11:
+			player->map->Update(player->enemy_->scene);
+			player->Update(keys);
+			player->enemy_->Update();
 			break;
 		case stage_12:
+			player->map->Update(player->enemy_->scene);
+			player->Update(keys);
+			player->enemy_->Update();
 			break;
 		case stage_13:
+			player->map->Update(player->enemy_->scene);
+			player->Update(keys);
+			player->enemy_->Update();
 			break;
 		case stage_14:
+			player->map->Update(player->enemy_->scene);
+			player->Update(keys);
+			player->enemy_->Update();
 			break;
 		case stage_15:
+			player->map->Update(player->enemy_->scene);
+			player->Update(keys);
+			player->enemy_->Update();
 			break;
 		case gameClear:
 			if (player->hitBox_->HitMouse_(mouse, titelButton.pos, titelButton.size)) {
@@ -275,6 +326,45 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 			}
 			if (player->GetTmpScene() == stage_2) {
 				player->clearSave(isClear[1]);
+			}
+			if (player->GetTmpScene() == stage_3) {
+				player->clearSave(isClear[2]);
+			}
+			if (player->GetTmpScene() == stage_4) {
+				player->clearSave(isClear[3]);
+			}
+			if (player->GetTmpScene() == stage_5) {
+				player->clearSave(isClear[4]);
+			}
+			if (player->GetTmpScene() == stage_6) {
+				player->clearSave(isClear[5]);
+			}
+			if (player->GetTmpScene() == stage_7) {
+				player->clearSave(isClear[6]);
+			}
+			if (player->GetTmpScene() == stage_8) {
+				player->clearSave(isClear[7]);
+			}
+			if (player->GetTmpScene() == stage_9) {
+				player->clearSave(isClear[8]);
+			}
+			if (player->GetTmpScene() == stage_10) {
+				player->clearSave(isClear[9]);
+			}
+			if (player->GetTmpScene() == stage_11) {
+				player->clearSave(isClear[10]);
+			}
+			if (player->GetTmpScene() == stage_12) {
+				player->clearSave(isClear[11]);
+			}
+			if (player->GetTmpScene() == stage_13) {
+				player->clearSave(isClear[12]);
+			}
+			if (player->GetTmpScene() == stage_14) {
+				player->clearSave(isClear[13]);
+			}
+			if (player->GetTmpScene() == stage_15) {
+				player->clearSave(isClear[14]);
 			}
 			break;
 		case gameOver:
@@ -372,30 +462,69 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 			player->enemy_->Draw();
 			break;
 		case stage_3:
+			player->map->Draw(player->GetIsSave());
+			player->Draw();
+			player->enemy_->Draw();
 			break;
 		case stage_4:
+			player->map->Draw(player->GetIsSave());
+			player->Draw();
+			player->enemy_->Draw();
 			break;
 		case stage_5:
+			player->map->Draw(player->GetIsSave());
+			player->Draw();
+			player->enemy_->Draw();
 			break;
 		case stage_6:
+			player->map->Draw(player->GetIsSave());
+			player->Draw();
+			player->enemy_->Draw();
 			break;
 		case stage_7:
+			player->map->Draw(player->GetIsSave());
+			player->Draw();
+			player->enemy_->Draw();
 			break;
 		case stage_8:
+			player->map->Draw(player->GetIsSave());
+			player->Draw();
+			player->enemy_->Draw();
 			break;
 		case stage_9:
+			player->map->Draw(player->GetIsSave());
+			player->Draw();
+			player->enemy_->Draw();
 			break;
 		case stage_10:
+			player->map->Draw(player->GetIsSave());
+			player->Draw();
+			player->enemy_->Draw();
 			break;
 		case stage_11:
+			player->map->Draw(player->GetIsSave());
+			player->Draw();
+			player->enemy_->Draw();
 			break;
 		case stage_12:
+			player->map->Draw(player->GetIsSave());
+			player->Draw();
+			player->enemy_->Draw();
 			break;
 		case stage_13:
+			player->map->Draw(player->GetIsSave());
+			player->Draw();
+			player->enemy_->Draw();
 			break;
 		case stage_14:
+			player->map->Draw(player->GetIsSave());
+			player->Draw();
+			player->enemy_->Draw();
 			break;
 		case stage_15:
+			player->map->Draw(player->GetIsSave());
+			player->Draw();
+			player->enemy_->Draw();
 			break;
 		case gameClear:
 			Novice::DrawQuad(

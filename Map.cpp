@@ -8,10 +8,49 @@ Map::Map() {
 }
 
 void Map::Update(Scene_ scene) {
-	if (scene==stage_1){
+	if (scene == stage_1) {
 		loadMapChip_->MapChipLood(ppMap, "./Resource/Csv/stage_1.csv");
 	}
-	if (scene==stage_2){
+	if (scene == stage_2) {
+		loadMapChip_->MapChipLood(ppMap, "./Resource/Csv/stage_2.csv");
+	}
+	if (scene == stage_3) {
+		loadMapChip_->MapChipLood(ppMap, "./Resource/Csv/stage_2.csv");
+	}
+	if (scene == stage_4) {
+		loadMapChip_->MapChipLood(ppMap, "./Resource/Csv/stage_1.csv");
+	}
+	if (scene == stage_5) {
+		loadMapChip_->MapChipLood(ppMap, "./Resource/Csv/stage_2.csv");
+	}
+	if (scene == stage_6) {
+		loadMapChip_->MapChipLood(ppMap, "./Resource/Csv/stage_2.csv");
+	}
+	if (scene == stage_7) {
+		loadMapChip_->MapChipLood(ppMap, "./Resource/Csv/stage_1.csv");
+	}
+	if (scene == stage_8) {
+		loadMapChip_->MapChipLood(ppMap, "./Resource/Csv/stage_2.csv");
+	}
+	if (scene == stage_9) {
+		loadMapChip_->MapChipLood(ppMap, "./Resource/Csv/stage_2.csv");
+	}
+	if (scene == stage_10) {
+		loadMapChip_->MapChipLood(ppMap, "./Resource/Csv/stage_1.csv");
+	}
+	if (scene == stage_11) {
+		loadMapChip_->MapChipLood(ppMap, "./Resource/Csv/stage_2.csv");
+	}
+	if (scene == stage_12) {
+		loadMapChip_->MapChipLood(ppMap, "./Resource/Csv/stage_2.csv");
+	}
+	if (scene == stage_13) {
+		loadMapChip_->MapChipLood(ppMap, "./Resource/Csv/stage_1.csv");
+	}
+	if (scene == stage_14) {
+		loadMapChip_->MapChipLood(ppMap, "./Resource/Csv/stage_2.csv");
+	}
+	if (scene == stage_15) {
 		loadMapChip_->MapChipLood(ppMap, "./Resource/Csv/stage_2.csv");
 	}
 

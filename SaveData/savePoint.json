@@ -1,8 +1,47 @@
 {
-    "firstStage": {
-        "isSave": 0
-    },
-    "secondStage": {
-        "isSave": 0
-    }
+  "firstStage": {
+    "isSave": 0
+  },
+  "secondStage": {
+    "isSave": 0
+  },
+  "thirdStage": {
+    "isSave": 0
+  },
+  "fourthStage": {
+    "isSave": 0
+  },
+  "fifthStage": {
+    "isSave": 0
+  },
+  "sixthStage": {
+    "isSave": 0
+  },
+  "seventhStage": {
+    "isSave": 0
+  },
+  "eighthStage": {
+    "isSave": 0
+  },
+  "ninthStage": {
+    "isSave": 0
+  },
+  "tenthStage": {
+    "isSave": 0
+  },
+  "eleventhStage": {
+    "isSave": 0
+  },
+  "twelfthStage": {
+    "isSave": 0
+  },
+  "thirteenthStage": {
+    "isSave": 0
+  },
+  "fourteenthStage": {
+    "isSave": 0
+  },
+  "fifteenthStage": {
+    "isSave": 0
+  }
 }

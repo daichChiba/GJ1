@@ -26,8 +26,47 @@ void Player::Update(char* keys) {
 	if (enemy_->scene == stage_1) {
 		StageSave = File_Read::Read_Save("SaveData/savePoint.json", "firstStage", "isSave", "first stage isSave:");
 	}
-	if (enemy_->scene == stage_1) {
+	if (enemy_->scene == stage_2) {
 		StageSave = File_Read::Read_Save("SaveData/savePoint.json", "secondStage", "isSave", "second stage isSave:");
+	}
+	if (enemy_->scene == stage_3) {
+		StageSave = File_Read::Read_Save("SaveData/savePoint.json", "thirdStage", "isSave", "third stage isSave:");
+	}
+	if (enemy_->scene == stage_4) {
+		StageSave = File_Read::Read_Save("SaveData/savePoint.json", "fourthStage", "isSave", "fourth stage isSave:");
+	}
+	if (enemy_->scene == stage_5) {
+		StageSave = File_Read::Read_Save("SaveData/savePoint.json", "fifthStage", "isSave", "fifth stage isSave:");
+	}
+	if (enemy_->scene == stage_6) {
+		StageSave = File_Read::Read_Save("SaveData/savePoint.json", "sixthStage", "isSave", "sixth stage isSave:");
+	}
+	if (enemy_->scene == stage_7) {
+		StageSave = File_Read::Read_Save("SaveData/savePoint.json", "seventhStage", "isSave", "seventh stage isSave:");
+	}
+	if (enemy_->scene == stage_8) {
+		StageSave = File_Read::Read_Save("SaveData/savePoint.json", "eighthStage", "isSave", "eighth stage isSave:");
+	}
+	if (enemy_->scene == stage_9) {
+		StageSave = File_Read::Read_Save("SaveData/savePoint.json", "ninthStage", "isSave", "ninth stage isSave:");
+	}
+	if (enemy_->scene == stage_10) {
+		StageSave = File_Read::Read_Save("SaveData/savePoint.json", "tenthStage", "isSave", "tenth stage isSave:");
+	}
+	if (enemy_->scene == stage_11) {
+		StageSave = File_Read::Read_Save("SaveData/savePoint.json", "eleventhStage", "isSave", "eleventh stage isSave:");
+	}
+	if (enemy_->scene == stage_12) {
+		StageSave = File_Read::Read_Save("SaveData/savePoint.json", "twelfthStage", "isSave", "twelfth stage isSave:");
+	}
+	if (enemy_->scene == stage_13) {
+		StageSave = File_Read::Read_Save("SaveData/savePoint.json", "thirteenthStage", "isSave", "thirteenth stage isSave:");
+	}
+	if (enemy_->scene == stage_14) {
+		StageSave = File_Read::Read_Save("SaveData/savePoint.json", "fourteenthStage", "isSave", "fourteenth stage isSave:");
+	}
+	if (enemy_->scene == stage_15) {
+		StageSave = File_Read::Read_Save("SaveData/savePoint.json", "fifteenthStage", "isSave", "fifteenth stage isSave:");
 	}
 
 	//向きの初期化
@@ -67,6 +106,45 @@ void Player::Update(char* keys) {
 			if (enemy_->scene == stage_2) {
 				StageSave = File_White::White_Save("SaveData/savePoint.json", "secondStage", "isSave", 1);
 			}
+			if (enemy_->scene == stage_3) {
+				StageSave = File_White::White_Save("SaveData/savePoint.json", "thirdStage", "isSave", 1);
+			}
+			if (enemy_->scene == stage_4) {
+				StageSave = File_White::White_Save("SaveData/savePoint.json", "fourthStage", "isSave", 1);
+			}
+			if (enemy_->scene == stage_5) {
+				StageSave = File_White::White_Save("SaveData/savePoint.json", "fifthStage", "isSave", 1);
+			}
+			if (enemy_->scene == stage_6) {
+				StageSave = File_White::White_Save("SaveData/savePoint.json", "sixthStage", "isSave", 1);
+			}
+			if (enemy_->scene == stage_7) {
+				StageSave = File_White::White_Save("SaveData/savePoint.json", "seventhStage", "isSave", 1);
+			}
+			if (enemy_->scene == stage_8) {
+				StageSave = File_White::White_Save("SaveData/savePoint.json", "eighthStage", "isSave", 1);
+			}
+			if (enemy_->scene == stage_9) {
+				StageSave = File_White::White_Save("SaveData/savePoint.json", "ninthStage", "isSave", 1);
+			}
+			if (enemy_->scene == stage_10) {
+				StageSave = File_White::White_Save("SaveData/savePoint.json", "tenthStage", "isSave", 1);
+			}
+			if (enemy_->scene == stage_11) {
+				StageSave = File_White::White_Save("SaveData/savePoint.json", "eleventhStage", "isSave", 1);
+			}
+			if (enemy_->scene == stage_12) {
+				StageSave = File_White::White_Save("SaveData/savePoint.json", "twelfthStage", "isSave", 1);
+			}
+			if (enemy_->scene == stage_13) {
+				StageSave = File_White::White_Save("SaveData/savePoint.json", "thirteenthStage", "isSave", 1);
+			}
+			if (enemy_->scene == stage_14) {
+				StageSave = File_White::White_Save("SaveData/savePoint.json", "fourteenthStage", "isSave", 1);
+			}
+			if (enemy_->scene == stage_15) {
+				StageSave = File_White::White_Save("SaveData/savePoint.json", "fifteenthStage", "isSave", 1);
+			}
 		}
 	}
 
@@ -95,7 +173,45 @@ void Player::Update(char* keys) {
 		if (enemy_->scene == stage_2) {
 			tmpScene = stage_2;
 		}
-
+		if (enemy_->scene == stage_3) {
+			tmpScene = stage_3;
+		}
+		if (enemy_->scene == stage_4) {
+			tmpScene = stage_4;
+		}
+		if (enemy_->scene == stage_5) {
+			tmpScene = stage_5;
+		}
+		if (enemy_->scene == stage_6) {
+			tmpScene = stage_6;
+		}
+		if (enemy_->scene == stage_7) {
+			tmpScene = stage_7;
+		}
+		if (enemy_->scene == stage_8) {
+			tmpScene = stage_8;
+		}
+		if (enemy_->scene == stage_9) {
+			tmpScene = stage_9;
+		}
+		if (enemy_->scene == stage_10) {
+			tmpScene = stage_10;
+		}
+		if (enemy_->scene == stage_11) {
+			tmpScene = stage_11;
+		}
+		if (enemy_->scene == stage_12) {
+			tmpScene = stage_12;
+		}
+		if (enemy_->scene == stage_13) {
+			tmpScene = stage_13;
+		}
+		if (enemy_->scene == stage_14) {
+			tmpScene = stage_14;
+		}
+		if (enemy_->scene == stage_15) {
+			tmpScene = stage_15;
+		}
 		map->ResetMap(map->ppMap);
 		
 		enemy_->scene = gameClear;
@@ -106,6 +222,45 @@ void Player::Update(char* keys) {
 		}
 		if (enemy_->scene == stage_2) {
 			StageSave = File_White::White_Save("SaveData/savePoint.json", "secondStage", "isSave", 0);
+		}
+		if (enemy_->scene == stage_3) {
+			StageSave = File_White::White_Save("SaveData/savePoint.json", "thirdStage", "isSave", 0);
+		}
+		if (enemy_->scene == stage_4) {
+			StageSave = File_White::White_Save("SaveData/savePoint.json", "fourthStage", "isSave", 0);
+		}
+		if (enemy_->scene == stage_5) {
+			StageSave = File_White::White_Save("SaveData/savePoint.json", "fifthStage", "isSave", 0);
+		}
+		if (enemy_->scene == stage_6) {
+			StageSave = File_White::White_Save("SaveData/savePoint.json", "sixthStage", "isSave", 0);
+		}
+		if (enemy_->scene == stage_7) {
+			StageSave = File_White::White_Save("SaveData/savePoint.json", "seventhStage", "isSave", 0);
+		}
+		if (enemy_->scene == stage_8) {
+			StageSave = File_White::White_Save("SaveData/savePoint.json", "eighthStage", "isSave", 0);
+		}
+		if (enemy_->scene == stage_9) {
+			StageSave = File_White::White_Save("SaveData/savePoint.json", "ninthStage", "isSave", 0);
+		}
+		if (enemy_->scene == stage_10) {
+			StageSave = File_White::White_Save("SaveData/savePoint.json", "tenthStage", "isSave", 0);
+		}
+		if (enemy_->scene == stage_11) {
+			StageSave = File_White::White_Save("SaveData/savePoint.json", "eleventhStage", "isSave", 0);
+		}
+		if (enemy_->scene == stage_12) {
+			StageSave = File_White::White_Save("SaveData/savePoint.json", "twelfthStage", "isSave", 0);
+		}
+		if (enemy_->scene == stage_13) {
+			StageSave = File_White::White_Save("SaveData/savePoint.json", "thirteenthStage", "isSave", 0);
+		}
+		if (enemy_->scene == stage_14) {
+			StageSave = File_White::White_Save("SaveData/savePoint.json", "fourteenthStage", "isSave", 0);
+		}
+		if (enemy_->scene == stage_15) {
+			StageSave = File_White::White_Save("SaveData/savePoint.json", "fifteenthStage", "isSave", 0);
 		}
 		isClear = false;
 		isSave = false;
@@ -368,4 +523,44 @@ void Player::clearSave(bool isClear_){
 	if (tmpScene == stage_2) {
 		isClear_ = File_White::White_Save("SaveData/stageClear.json", "secondStage", "isClear", 1);
 	}
+	if (tmpScene == stage_3) {
+		isClear = File_White::White_Save("SaveData/stageClear.json", "thirdStage", "isClear", 1);
+	}
+	if (tmpScene == stage_4) {
+		isClear = File_White::White_Save("SaveData/stageClear.json", "fourthStage", "isClear", 1);
+	}
+	if (tmpScene == stage_5) {
+		isClear = File_White::White_Save("SaveData/stageClear.json", "fifthStage", "isClear", 1);
+	}
+	if (tmpScene == stage_6) {
+		isClear = File_White::White_Save("SaveData/stageClear.json", "sixthStage", "isClear", 1);
+	}
+	if (tmpScene == stage_7) {
+		isClear = File_White::White_Save("SaveData/stageClear.json", "seventhStage", "isClear", 1);
+	}
+	if (tmpScene == stage_8) {
+		isClear = File_White::White_Save("SaveData/stageClear.json", "eighthStage", "isClear", 1);
+	}
+	if (tmpScene == stage_9) {
+		isClear = File_White::White_Save("SaveData/stageClear.json", "ninthStage", "isClear", 1);
+	}
+	if (tmpScene == stage_10) {
+		isClear = File_White::White_Save("SaveData/stageClear.json", "tenthStage", "isClear", 1);
+	}
+	if (tmpScene == stage_11) {
+		isClear = File_White::White_Save("SaveData/stageClear.json", "eleventhStage", "isClear", 1);
+	}
+	if (tmpScene == stage_12) {
+		isClear = File_White::White_Save("SaveData/stageClear.json", "twelfthStage", "isClear", 1);
+	}
+	if (tmpScene == stage_13) {
+		isClear = File_White::White_Save("SaveData/stageClear.json", "thirteenthStage", "isClear", 1);
+	}
+	if (tmpScene == stage_14) {
+		isClear = File_White::White_Save("SaveData/stageClear.json", "fourteenthStage", "isClear", 1);
+	}
+	if (tmpScene == stage_15) {
+		isClear = File_White::White_Save("SaveData/stageClear.json", "fifteenthStage", "isClear", 1);
+	}
+
 }
