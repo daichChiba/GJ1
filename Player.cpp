@@ -16,7 +16,7 @@ Player::Player() {
 	PlayerGH = Novice::LoadTexture("./Resource/player.png");
 	isAlive = true;
 	isSave = false;
-	firstStageSave = File_Read::Read_Save("SaveData/stageSave.json", "firstStage", "isSave", "first stage isClear:");
+	firstStageSave = File_Read::Read_Save("SaveData/savePoint.json", "firstStage", "isSave", "first stage isClear:");
 	DeathCountor = 60;
 	isClear = false;
 }
@@ -54,7 +54,7 @@ void Player::Update(char* keys) {
 		//map->SetMap(map->ppMap, 3, 4);
 
 		if (firstStageSave == false){
-			firstStageSave = File_White::White_Save("SaveData/stageSave.json", "firstStage", "isSave", 1);
+			firstStageSave = File_White::White_Save("SaveData/savePoint.json", "firstStage", "isSave", 1);
 		}
 	}
 
@@ -72,6 +72,7 @@ void Player::Update(char* keys) {
 
 	if (isClear==true){
 		enemy_->scene = gameClear;
+
 	}
 
 	/*仮に移動させる
