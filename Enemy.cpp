@@ -17,7 +17,6 @@ Enemy::Enemy(Vector2 pos) {
 
 void Enemy::Update() {
 	map->Update(scene);
-	light->Update(DirectionNumber, pos_);
 
 
 
@@ -165,7 +164,6 @@ void Enemy::Update() {
 }
 
 void Enemy::Draw() {
-	light->Draw(DirectionNumber);
 	if (isAlive == true) {
 		Novice::DrawSprite(
 			static_cast<int>(pos_.x - (radius_ * 0.5f)), static_cast<int>(pos_.y - (radius_ * 0.5f)),

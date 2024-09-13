@@ -4,7 +4,6 @@
 #include "HitBox.h"
 #include"Map.h"
 #include "Scene.h"
-#include"Light.h"
 
 
 class Enemy{
@@ -15,7 +14,6 @@ public:
 	HitBox* hitBox_ = new HitBox();
 	Map* map = new Map();
 	Scene_ scene = titel;
-	Light* light = new Light();
 
 
 	Vector2 GetPos_() { return pos_; }

@@ -40,6 +40,10 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 	Vector2(200.0f,80.0f)//幅
 	};
 
+	Button XButton{
+		Vector2(16.0f,16.0f),
+		Vector2(32.0f,32.0f)
+	};
 
 	Button Stage_1st{
 	Vector2(144.0f,85.33f),//高さ
@@ -146,7 +150,9 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 	int GameClearGH = Novice::LoadTexture("./Resource/GameClear.png");
 	int continueGH = Novice::LoadTexture("./Resource/continuation.png");
 	int AllResetGH = Novice::LoadTexture("./Resource/allReset.png");
-	//int 
+	int RuleButtonGH = Novice::LoadTexture("./Resource/explan.png");
+	int RuleGH = Novice::LoadTexture("./Resource/explanation.png");
+	int XGH = Novice::LoadTexture("./Resource/X.png");
 
 
 	// キー入力結果を受け取る箱
@@ -207,7 +213,11 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 			break;
 
 		case rule:
-
+			if (player->hitBox_->HitMouse_(mouse,XButton.pos,XButton.size)){
+				if (Novice::IsTriggerMouse(0)){
+					player->enemy_->scene = titel;
+				}
+			}
 			break;
 
 		case Select:
@@ -457,6 +467,11 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 			SpriteDraw(Vector2(0.0f, 0.0f), titelGH, WHITE);
 			DrawButton(continueButton, continueGH, WHITE);
 			DrawButton(AllResetButton, AllResetGH, WHITE);
+			DrawButton(RuleButton, RuleButtonGH, WHITE);
+			break;
+		case rule:
+			SpriteDraw(Vector2(0.0f, 0.0f), RuleGH, WHITE);
+			DrawButton(XButton, XGH, WHITE);
 			break;
 		case Select:
 			SpriteDraw(Vector2(0.0f, 0.0f), player->map->GetBackGroundGH(), WHITE);
