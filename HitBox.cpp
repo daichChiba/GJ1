@@ -58,6 +58,17 @@ bool HitBox::PlayerHitBox(Vector2 player_pos_, float player_radius_, Vector2 pos
 	return false;
 }
 
+bool HitBox::PlayerHitBox(Vector2 player_pos_, float player_radius_, Vector2 pos_, Vector2 size_){
+	if (player_pos_.x + (player_radius_ * 0.5f) >= pos_.x - (size_.x * 0.5f) &&
+		pos_.x + (size_.x * 0.5f) >= player_pos_.x - (player_radius_ * 0.5f)) {
+		if (player_pos_.y + (player_radius_ * 0.5f) >= pos_.y - (size_.y * 0.5f) &&
+			pos_.y + (size_.y * 0.5f) >= player_pos_.y - (player_radius_ * 0.5f)) {
+			return true;
+		}
+	}
+	return false;
+}
+
 bool HitBox::HitMouse_(Vector2 mouse, Vector2 pos_, Vector2 size_){
 	if (mouse.x >= pos_.x - (size_.x * 0.5f) && mouse.x <= pos_.x + (size_.x * 0.5f)) {
 		if (mouse.y >= pos_.y - (size_.y * 0.5f) && mouse.y <= pos_.y + (size_.y * 0.5f)) {

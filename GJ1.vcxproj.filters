@@ -71,6 +71,9 @@
     <ClCompile Include="Needle.cpp">
       <Filter>KamataEngine</Filter>
     </ClCompile>
+    <ClCompile Include="Light.cpp">
+      <Filter>KamataEngine</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="C:\KamataEngine\DirectXGame\audio\Audio.h">
@@ -157,6 +160,7 @@
     <ClInclude Include="Scene.h" />
     <ClInclude Include="LoadMapChip.h" />
     <ClInclude Include="Needle.h" />
+    <ClInclude Include="Light.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="SaveData\savePoint.json" />

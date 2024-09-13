@@ -18,7 +18,7 @@ const char kWindowTitle[] = "大脱獄";
 int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 
 	// ライブラリの初期化
-	Novice::Initialize(kWindowTitle, 672, 720);
+	Novice::Initialize(kWindowTitle, 672, 672);
 	Player* player = new Player();
 
 
@@ -32,7 +32,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 	Vector2(200.0f,80.0f)//幅
 	};
 	Button titelButton{
-	Vector2(450.0f,700.0f),//高さ
+	Vector2(450.0f,600.0f),//高さ
 	Vector2(200.0f,80.0f)//幅
 	};
 	Button RuleButton{
@@ -129,21 +129,21 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 	int WhiteGH_ = Novice::LoadTexture("white1x1.png");
 	int mouseGH = Novice::LoadTexture("./Resource/tejou.png");
 	int clearGH = Novice::LoadTexture("./Resource/Star.png");
-	int number1GH=Novice::LoadTexture("./Resource/1.png");
-	int number2GH =Novice::LoadTexture("./Resource/2.png");
-	int number3GH=Novice::LoadTexture("./Resource/3.png");
-	int number4GH=Novice::LoadTexture("./Resource/4.png");
-	int number5GH=Novice::LoadTexture("./Resource/5.png");
-	int number6GH=Novice::LoadTexture("./Resource/6.png");
-	int number7GH=Novice::LoadTexture("./Resource/7.png");
-	int number8GH=Novice::LoadTexture("./Resource/8.png");
-	int number9GH=Novice::LoadTexture("./Resource/9.png");
-	int number10GH=Novice::LoadTexture("./Resource/10.png");
-	int number11GH=Novice::LoadTexture("./Resource/11.png");
-	int number12GH=Novice::LoadTexture("./Resource/12.png");
-	int number13GH=Novice::LoadTexture("./Resource/13.png");
-	int number14GH=Novice::LoadTexture("./Resource/14.png");
-	int number15GH=Novice::LoadTexture("./Resource/15.png");
+	int number1GH = Novice::LoadTexture("./Resource/1.png");
+	int number2GH = Novice::LoadTexture("./Resource/2.png");
+	int number3GH = Novice::LoadTexture("./Resource/3.png");
+	int number4GH = Novice::LoadTexture("./Resource/4.png");
+	int number5GH = Novice::LoadTexture("./Resource/5.png");
+	int number6GH = Novice::LoadTexture("./Resource/6.png");
+	int number7GH = Novice::LoadTexture("./Resource/7.png");
+	int number8GH = Novice::LoadTexture("./Resource/8.png");
+	int number9GH = Novice::LoadTexture("./Resource/9.png");
+	int number10GH = Novice::LoadTexture("./Resource/10.png");
+	int number11GH = Novice::LoadTexture("./Resource/11.png");
+	int number12GH = Novice::LoadTexture("./Resource/12.png");
+	int number13GH = Novice::LoadTexture("./Resource/13.png");
+	int number14GH = Novice::LoadTexture("./Resource/14.png");
+	int number15GH = Novice::LoadTexture("./Resource/15.png");
 
 	int titelGH = Novice::LoadTexture("./Resource/titel.png");
 	int GameOverGH = Novice::LoadTexture("./Resource/GameOver.png");
@@ -153,6 +153,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 	int RuleButtonGH = Novice::LoadTexture("./Resource/explan.png");
 	int RuleGH = Novice::LoadTexture("./Resource/explanation.png");
 	int XGH = Novice::LoadTexture("./Resource/X.png");
+	int titelButtonGH = Novice::LoadTexture("./Resource/titleBottan.png");
 
 
 	// キー入力結果を受け取る箱
@@ -184,28 +185,44 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 					player->enemy_->scene = Select;
 				}
 			}
-			if (player->hitBox_->HitMouse_(mouse,AllResetButton.pos,AllResetButton.size)){
-				if (Novice::IsTriggerMouse(0)){
+			if (player->hitBox_->HitMouse_(mouse, AllResetButton.pos, AllResetButton.size)) {
+				if (Novice::IsTriggerMouse(0)) {
 					player->enemy_->scene = Select;
 					isClear[0] = File_White::White_Save("SaveData/stageClear.json", "firstStage", "isClear", 0);
 					isClear[1] = File_White::White_Save("SaveData/stageClear.json", "secondStage", "isClear", 0);
-					isClear[2]= File_White::White_Save("SaveData/stageClear.json", "thirdStage", "isClear", 0);
-					isClear[3]= File_White::White_Save("SaveData/stageClear.json", "fourthStage", "isClear", 0);
-					isClear[4]= File_White::White_Save("SaveData/stageClear.json", "fifthStage", "isClear", 0);
-					isClear[5]= File_White::White_Save("SaveData/stageClear.json", "sixthStage", "isClear", 0);
-					isClear[6]= File_White::White_Save("SaveData/stageClear.json", "seventhStage", "isClear", 0);
-					isClear[7]= File_White::White_Save("SaveData/stageClear.json", "eighthStage", "isClear", 0);
-					isClear[8]= File_White::White_Save("SaveData/stageClear.json", "ninthStage", "isClear", 0);
-					isClear[9]= File_White::White_Save("SaveData/stageClear.json", "tenthStage", "isClear", 0);
-					isClear[10]= File_White::White_Save("SaveData/stageClear.json", "eleventhStage", "isClear", 0);
-					isClear[11]= File_White::White_Save("SaveData/stageClear.json", "twelfthStage", "isClear", 0);
-					isClear[12]= File_White::White_Save("SaveData/stageClear.json", "thirteenthStage", "isClear", 0);
-					isClear[13]= File_White::White_Save("SaveData/stageClear.json", "fourteenthStage", "isClear", 0);
-					isClear[14]= File_White::White_Save("SaveData/stageClear.json", "fifteenthStage", "isClear", 0);
+					isClear[2] = File_White::White_Save("SaveData/stageClear.json", "thirdStage", "isClear", 0);
+					isClear[3] = File_White::White_Save("SaveData/stageClear.json", "fourthStage", "isClear", 0);
+					isClear[4] = File_White::White_Save("SaveData/stageClear.json", "fifthStage", "isClear", 0);
+					isClear[5] = File_White::White_Save("SaveData/stageClear.json", "sixthStage", "isClear", 0);
+					isClear[6] = File_White::White_Save("SaveData/stageClear.json", "seventhStage", "isClear", 0);
+					isClear[7] = File_White::White_Save("SaveData/stageClear.json", "eighthStage", "isClear", 0);
+					isClear[8] = File_White::White_Save("SaveData/stageClear.json", "ninthStage", "isClear", 0);
+					isClear[9] = File_White::White_Save("SaveData/stageClear.json", "tenthStage", "isClear", 0);
+					isClear[10] = File_White::White_Save("SaveData/stageClear.json", "eleventhStage", "isClear", 0);
+					isClear[11] = File_White::White_Save("SaveData/stageClear.json", "twelfthStage", "isClear", 0);
+					isClear[12] = File_White::White_Save("SaveData/stageClear.json", "thirteenthStage", "isClear", 0);
+					isClear[13] = File_White::White_Save("SaveData/stageClear.json", "fourteenthStage", "isClear", 0);
+					isClear[14] = File_White::White_Save("SaveData/stageClear.json", "fifteenthStage", "isClear", 0);
+
+					player->SetIsSave(File_White::White_Save("SaveData/savePoint.json", "firstStage", "isSave", 0));
+					player->SetIsSave(File_White::White_Save("SaveData/savePoint.json", "secondStage", "isSave", 0))  ;
+					player->SetIsSave(File_White::White_Save("SaveData/savePoint.json", "thirdStage", "isSave", 0))  ;
+					player->SetIsSave(File_White::White_Save("SaveData/savePoint.json", "fourthStage", "isSave", 0))  ;
+					player->SetIsSave(File_White::White_Save("SaveData/savePoint.json", "fifthStage", "isSave", 0))  ;
+					player->SetIsSave(File_White::White_Save("SaveData/savePoint.json", "sixthStage", "isSave", 0))  ;
+					player->SetIsSave(File_White::White_Save("SaveData/savePoint.json", "seventhStage", "isSave", 0))  ;
+					player->SetIsSave(File_White::White_Save("SaveData/savePoint.json", "eighthStage", "isSave", 0))  ;
+					player->SetIsSave(File_White::White_Save("SaveData/savePoint.json", "ninthStage", "isSave", 0))  ;
+					player->SetIsSave(File_White::White_Save("SaveData/savePoint.json", "tenthStage", "isSave", 0))  ;
+					player->SetIsSave(File_White::White_Save("SaveData/savePoint.json", "eleventhStage", "isSave", 0))  ;
+					player->SetIsSave(File_White::White_Save("SaveData/savePoint.json", "twelfthStage", "isSave", 0))  ;
+					player->SetIsSave(File_White::White_Save("SaveData/savePoint.json", "thirteenthStage", "isSave", 0))  ;
+					player->SetIsSave(File_White::White_Save("SaveData/savePoint.json", "fourteenthStage", "isSave", 0))  ;
+					player->SetIsSave(File_White::White_Save("SaveData/savePoint.json", "fifteenthStage", "isSave", 0))  ;
 
 				}
 			}
-			if (player->hitBox_->HitMouse_(mouse, RuleButton.pos, RuleButton.size)){
+			if (player->hitBox_->HitMouse_(mouse, RuleButton.pos, RuleButton.size)) {
 				if (Novice::IsTriggerMouse(0)) {
 					player->enemy_->scene = rule;
 				}
@@ -213,24 +230,24 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 			break;
 
 		case rule:
-			if (player->hitBox_->HitMouse_(mouse,XButton.pos,XButton.size)){
-				if (Novice::IsTriggerMouse(0)){
+			if (player->hitBox_->HitMouse_(mouse, XButton.pos, XButton.size)) {
+				if (Novice::IsTriggerMouse(0)) {
 					player->enemy_->scene = titel;
 				}
 			}
 			break;
 
 		case Select:
-			isClear[0]	= File_Read::Read_Save("SaveData/stageClear.json", "firstStage", "isClear", "first stage isClear:");
-			isClear[1]	= File_Read::Read_Save("SaveData/stageClear.json", "secondStage", "isClear", "second stage isClear:");
-			isClear[2]	= File_Read::Read_Save("SaveData/stageClear.json", "thirdStage", "isClear", "third stage isClear:");
-			isClear[3]	= File_Read::Read_Save("SaveData/stageClear.json", "fourthStage", "isClear", "fourth stage isClear:");
-			isClear[4]	= File_Read::Read_Save("SaveData/stageClear.json", "fifthStage", "isClear", "fifth stage isClear:");
-			isClear[5]	= File_Read::Read_Save("SaveData/stageClear.json", "sixthStage", "isClear", "sixth stage isClear:");
-			isClear[6]	= File_Read::Read_Save("SaveData/stageClear.json", "seventhStage", "isClear", "seventh stage isClear:");
-			isClear[7]	= File_Read::Read_Save("SaveData/stageClear.json", "eighthStage", "isClear", "eighth stage isClear:");
-			isClear[8]	= File_Read::Read_Save("SaveData/stageClear.json", "ninthStage", "isClear", "ninth stage isClear:");
-			isClear[9]	= File_Read::Read_Save("SaveData/stageClear.json", "tenthStage", "isClear", "tenth stage isClear:");
+			isClear[0] = File_Read::Read_Save("SaveData/stageClear.json", "firstStage", "isClear", "first stage isClear:");
+			isClear[1] = File_Read::Read_Save("SaveData/stageClear.json", "secondStage", "isClear", "second stage isClear:");
+			isClear[2] = File_Read::Read_Save("SaveData/stageClear.json", "thirdStage", "isClear", "third stage isClear:");
+			isClear[3] = File_Read::Read_Save("SaveData/stageClear.json", "fourthStage", "isClear", "fourth stage isClear:");
+			isClear[4] = File_Read::Read_Save("SaveData/stageClear.json", "fifthStage", "isClear", "fifth stage isClear:");
+			isClear[5] = File_Read::Read_Save("SaveData/stageClear.json", "sixthStage", "isClear", "sixth stage isClear:");
+			isClear[6] = File_Read::Read_Save("SaveData/stageClear.json", "seventhStage", "isClear", "seventh stage isClear:");
+			isClear[7] = File_Read::Read_Save("SaveData/stageClear.json", "eighthStage", "isClear", "eighth stage isClear:");
+			isClear[8] = File_Read::Read_Save("SaveData/stageClear.json", "ninthStage", "isClear", "ninth stage isClear:");
+			isClear[9] = File_Read::Read_Save("SaveData/stageClear.json", "tenthStage", "isClear", "tenth stage isClear:");
 			isClear[10] = File_Read::Read_Save("SaveData/stageClear.json", "eleventhStage", "isClear", "eleventh stage isClear:");
 			isClear[11] = File_Read::Read_Save("SaveData/stageClear.json", "twelfthStage", "isClear", "twelfth stage isClear:");
 			isClear[12] = File_Read::Read_Save("SaveData/stageClear.json", "thirteenthStage", "isClear", "thirteenth stage isClear:");
@@ -587,7 +604,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 			break;
 		case gameClear:
 			SpriteDraw(Vector2{ 0,0 }, GameClearGH, WHITE);
-			DrawButton(titelButton, WhiteGH_,BLACK);
+			DrawButton(titelButton, titelButtonGH, WHITE);
 			break;
 		case gameOver:
 			SpriteDraw(Vector2{ 0,0 }, GameOverGH, WHITE);
@@ -597,18 +614,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 		}
 		SpriteDraw(Vector2{ (mouse.x - 16.0f),(mouse.y - 16.0f) }, mouseGH, WHITE);
 
-		if (player->enemy_->scene == titel) {
-			Novice::ScreenPrintf(200, 680, "scene=titel");
-		}
-		if (player->enemy_->scene == Select) {
-			Novice::ScreenPrintf(200, 680, "scene=Select");
-		}
-		if (player->enemy_->scene == stage_1) {
-			Novice::ScreenPrintf(200, 680, "scene=stage_1");
-		}
-		if (player->enemy_->scene == stage_2) {
-			Novice::ScreenPrintf(200, 680, "scene=stage_2");
-		}
+
 
 
 		///

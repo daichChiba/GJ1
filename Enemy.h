@@ -4,6 +4,7 @@
 #include "HitBox.h"
 #include"Map.h"
 #include "Scene.h"
+#include "Light.h"
 
 
 class Enemy{
@@ -14,14 +15,14 @@ public:
 	HitBox* hitBox_ = new HitBox();
 	Map* map = new Map();
 	Scene_ scene = titel;
-
+	Light* light = new Light();
 
 	Vector2 GetPos_() { return pos_; }
 	float GetRadius_() { return radius_; }
 	Vector2 SetPos_(Vector2 pos) { return pos_ = pos; }
 	bool SetIsAlive(bool isAlive_) { return isAlive = isAlive_; }
 	bool GetIsAlive() { return isAlive; }
-
+	float SetSpeed(float speed) { return speed_ = speed; }
 
 private:
 	int EnemyGH;

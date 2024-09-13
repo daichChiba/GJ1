@@ -4,7 +4,7 @@
 
 
 Player::Player() {
-	pos_ = { 400.0f,64.0f };//pos_
+	pos_ = { 600.0f,64.0f };//pos_
 	verocity = { 0.0f,0.0f };//verocity
 	direction = { 0.0f, 0.0f };//direction
 	radius_ = 32.0f;//radius_
@@ -154,9 +154,10 @@ void Player::Update(char* keys) {
 		if (isSave==true){
 			pos_ = map->GetMapPos(3);
 		} else{
-			pos_ = { 400.0f,64.0f };
+			pos_ = { 600.0f,64.0f };
 		}
 		enemy_->SetPos_(Vector2{ 400.0f, 128.0f });
+		enemy_->SetSpeed(4.0f);
 	}
 
 	if (DeathCountor<=0){
@@ -216,8 +217,9 @@ void Player::Update(char* keys) {
 		map->ResetMap(map->ppMap);
 		
 		enemy_->scene = gameClear;
-		pos_ = { 400.0f,64.0f };
+		pos_ = { 600.0f,64.0f };
 		enemy_->SetPos_(Vector2{ 400.0f, 128.0f });
+		enemy_->SetSpeed(4.0f);
 		if (enemy_->scene == stage_1) {
 			StageSave = File_White::White_Save("SaveData/savePoint.json", "firstStage", "isSave", 0);
 		}
@@ -476,7 +478,11 @@ void Player::Update(char* keys) {
 	}
 
 
-
+	if (hitBox_->PlayerHitBox(pos_, radius_, enemy_->light->GetLightPos(), enemy_->light->GetLightSize())) {
+		enemy_->light->SetIsHit(true);
+	} else{
+		enemy_->light->SetIsHit(false);
+	}
 
 
 	if (hitBox_->PlayerHitBox(pos_, radius_, enemy_->GetPos_(), enemy_->GetRadius_())) {
@@ -500,22 +506,14 @@ void Player::Draw() {
 		static_cast<int>(radius_), static_cast<int>(radius_),
 		0.0f, BLACK, kFillModeWireFrame
 	);
-	if (isAlive == false) {
-		Novice::ScreenPrintf(0, 660, "isAlive=false");
-	} else {
-		Novice::ScreenPrintf(0, 660, "isAlive=true");
-	}
-	if (isSave == false) {
-		Novice::ScreenPrintf(0, 700, "isSave=false");
-	} else {
-		Novice::ScreenPrintf(0, 700, "isSave=true");
-	}
-	Novice::ScreenPrintf(100, 660, "DeathCountor=%d",DeathCountor);
-	if (isClear == false) {
-		Novice::ScreenPrintf(200, 700, "isClear=false");
-	} else {
-		Novice::ScreenPrintf(200, 700, "isClear=true");
-	}
+	Novice::DrawBox(
+		static_cast<int>(enemy_->light->GetLightPos().x - (enemy_->light->GetLightSize().x * 0.5f)),
+		static_cast<int>(enemy_->light->GetLightPos().y - (enemy_->light->GetLightSize().y * 0.5f)),
+		static_cast<int>(enemy_->light->GetLightSize().x), static_cast<int>(enemy_->light->GetLightSize().y),
+		0.0f, BLACK, kFillModeWireFrame
+	);
+
+
 }
 
 void Player::clearSave(bool isClear_){

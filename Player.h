@@ -17,7 +17,7 @@ public:
 	Enemy* enemy_ = new Enemy(Vector2{ 400.0f, 128.0f });
 	void clearSave(bool isClear_);
 	int GetTmpScene() { return tmpScene; }
-	
+	bool SetIsSave(bool issave) { return isSave = issave; }
 	//Enemy* enemy_2 = new Enemy();
 	bool GetIsSave(){ return isSave; }
 private:
@@ -37,6 +37,7 @@ private:
 	int DeathCountor;
 	bool isClear;
 	int tmpScene;
+	bool isHit;
 
 };
 

@@ -15,43 +15,43 @@ void Map::Update(Scene_ scene) {
 		loadMapChip_->MapChipLood(ppMap, "./Resource/Csv/stage_2.csv");
 	}
 	if (scene == stage_3) {
-		loadMapChip_->MapChipLood(ppMap, "./Resource/Csv/stage_2.csv");
+		loadMapChip_->MapChipLood(ppMap, "./Resource/Csv/stage_3.csv");
 	}
 	if (scene == stage_4) {
-		loadMapChip_->MapChipLood(ppMap, "./Resource/Csv/stage_1.csv");
+		loadMapChip_->MapChipLood(ppMap, "./Resource/Csv/stage_4.csv");
 	}
 	if (scene == stage_5) {
-		loadMapChip_->MapChipLood(ppMap, "./Resource/Csv/stage_2.csv");
+		loadMapChip_->MapChipLood(ppMap, "./Resource/Csv/stage_5.csv");
 	}
 	if (scene == stage_6) {
-		loadMapChip_->MapChipLood(ppMap, "./Resource/Csv/stage_2.csv");
+		loadMapChip_->MapChipLood(ppMap, "./Resource/Csv/stage_6.csv");
 	}
 	if (scene == stage_7) {
-		loadMapChip_->MapChipLood(ppMap, "./Resource/Csv/stage_1.csv");
+		loadMapChip_->MapChipLood(ppMap, "./Resource/Csv/stage_7.csv");
 	}
 	if (scene == stage_8) {
-		loadMapChip_->MapChipLood(ppMap, "./Resource/Csv/stage_2.csv");
+		loadMapChip_->MapChipLood(ppMap, "./Resource/Csv/stage_8.csv");
 	}
 	if (scene == stage_9) {
-		loadMapChip_->MapChipLood(ppMap, "./Resource/Csv/stage_2.csv");
+		loadMapChip_->MapChipLood(ppMap, "./Resource/Csv/stage_9.csv");
 	}
 	if (scene == stage_10) {
-		loadMapChip_->MapChipLood(ppMap, "./Resource/Csv/stage_1.csv");
+		loadMapChip_->MapChipLood(ppMap, "./Resource/Csv/stage_10.csv");
 	}
 	if (scene == stage_11) {
-		loadMapChip_->MapChipLood(ppMap, "./Resource/Csv/stage_2.csv");
+		loadMapChip_->MapChipLood(ppMap, "./Resource/Csv/stage_11.csv");
 	}
 	if (scene == stage_12) {
-		loadMapChip_->MapChipLood(ppMap, "./Resource/Csv/stage_2.csv");
+		loadMapChip_->MapChipLood(ppMap, "./Resource/Csv/stage_12.csv");
 	}
 	if (scene == stage_13) {
-		loadMapChip_->MapChipLood(ppMap, "./Resource/Csv/stage_1.csv");
+		loadMapChip_->MapChipLood(ppMap, "./Resource/Csv/stage_13.csv");
 	}
 	if (scene == stage_14) {
-		loadMapChip_->MapChipLood(ppMap, "./Resource/Csv/stage_2.csv");
+		loadMapChip_->MapChipLood(ppMap, "./Resource/Csv/stage_14.csv");
 	}
 	if (scene == stage_15) {
-		loadMapChip_->MapChipLood(ppMap, "./Resource/Csv/stage_2.csv");
+		loadMapChip_->MapChipLood(ppMap, "./Resource/Csv/stage_15.csv");
 	}
 
 

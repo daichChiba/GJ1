@@ -17,8 +17,11 @@ Enemy::Enemy(Vector2 pos) {
 
 void Enemy::Update() {
 	map->Update(scene);
+	light->Update(DirectionNumber, pos_);
 
-
+	if (light->GetIsHit()){
+		speed_ = 6.0f;
+	}
 
 	if(isAlive==true){
 		//向きの初期化
@@ -164,6 +167,8 @@ void Enemy::Update() {
 }
 
 void Enemy::Draw() {
+	light->Draw(DirectionNumber);
+
 	if (isAlive == true) {
 		Novice::DrawSprite(
 			static_cast<int>(pos_.x - (radius_ * 0.5f)), static_cast<int>(pos_.y - (radius_ * 0.5f)),
@@ -181,5 +186,4 @@ void Enemy::Draw() {
 
 
 
-	Novice::ScreenPrintf(0, 680, "DirectionCount=%d",DirectionCount);
 }
