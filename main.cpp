@@ -21,17 +21,22 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 	Novice::Initialize(kWindowTitle, 672, 720);
 	Player* player = new Player();
 
+
 	Vector2 mouse = { 0.0f,0.0f };
-	Button selectButton{
-	Vector2(140.0f,700.0f),//高さ
+	Button continueButton{
+	Vector2(140.0f,600.0f),//高さ
 	Vector2(200.0f,80.0f)//幅
 	};
 	Button AllResetButton{
-	Vector2(340.0f,700.0f),//高さ
+	Vector2(340.0f,600.0f),//高さ
 	Vector2(200.0f,80.0f)//幅
 	};
 	Button titelButton{
 	Vector2(450.0f,700.0f),//高さ
+	Vector2(200.0f,80.0f)//幅
+	};
+	Button RuleButton{
+	Vector2(540.0f,600.0f),//高さ
 	Vector2(200.0f,80.0f)//幅
 	};
 
@@ -139,6 +144,9 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 	int titelGH = Novice::LoadTexture("./Resource/titel.png");
 	int GameOverGH = Novice::LoadTexture("./Resource/GameOver.png");
 	int GameClearGH = Novice::LoadTexture("./Resource/GameClear.png");
+	int continueGH = Novice::LoadTexture("./Resource/continuation.png");
+	int AllResetGH = Novice::LoadTexture("./Resource/allReset.png");
+	//int 
 
 
 	// キー入力結果を受け取る箱
@@ -165,7 +173,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 
 		switch (player->enemy_->scene) {
 		case titel:
-			if (player->hitBox_->HitMouse_(mouse, selectButton.pos, selectButton.size)) {
+			if (player->hitBox_->HitMouse_(mouse, continueButton.pos, continueButton.size)) {
 				if (Novice::IsTriggerMouse(0)) {
 					player->enemy_->scene = Select;
 				}
@@ -191,7 +199,17 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 
 				}
 			}
+			if (player->hitBox_->HitMouse_(mouse, RuleButton.pos, RuleButton.size)){
+				if (Novice::IsTriggerMouse(0)) {
+					player->enemy_->scene = rule;
+				}
+			}
 			break;
+
+		case rule:
+
+			break;
+
 		case Select:
 			isClear[0]	= File_Read::Read_Save("SaveData/stageClear.json", "firstStage", "isClear", "first stage isClear:");
 			isClear[1]	= File_Read::Read_Save("SaveData/stageClear.json", "secondStage", "isClear", "second stage isClear:");
@@ -437,11 +455,11 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 		switch (player->enemy_->scene) {
 		case titel:
 			SpriteDraw(Vector2(0.0f, 0.0f), titelGH, WHITE);
-			DrawButton(selectButton, WhiteGH_, BLACK);
-			DrawButton(AllResetButton, WhiteGH_, BLUE);
+			DrawButton(continueButton, continueGH, WHITE);
+			DrawButton(AllResetButton, AllResetGH, WHITE);
 			break;
 		case Select:
-			Novice::DrawSprite(0, 0, player->map->GetBackGroundGH(), 1.0f, 1.0f, 0.0f, WHITE);
+			SpriteDraw(Vector2(0.0f, 0.0f), player->map->GetBackGroundGH(), WHITE);
 			DrawButton(Stage_1st, number1GH);
 			DrawButton(Stage_2nd, number2GH);
 			DrawButton(Stage_3rd, number3GH);

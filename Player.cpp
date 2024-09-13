@@ -215,6 +215,7 @@ void Player::Update(char* keys) {
 		}
 		map->ResetMap(map->ppMap);
 		
+		enemy_->scene = gameClear;
 		pos_ = { 400.0f,64.0f };
 		enemy_->SetPos_(Vector2{ 400.0f, 128.0f });
 		if (enemy_->scene == stage_1) {
@@ -262,11 +263,9 @@ void Player::Update(char* keys) {
 		if (enemy_->scene == stage_15) {
 			StageSave = File_White::White_Save("SaveData/savePoint.json", "fifteenthStage", "isSave", 0);
 		}
-		enemy_->scene = gameClear;
 		isClear = false;
 		isSave = false;
 		//isAlive = true;
-
 	}
 
 	/*仮に移動させる
@@ -480,9 +479,10 @@ void Player::Update(char* keys) {
 
 
 
-	if (hitBox_->PlayerHitBox(pos_, radius_, enemy_->GetPos_(), enemy_->GetRadius_())){
+	if (hitBox_->PlayerHitBox(pos_, radius_, enemy_->GetPos_(), enemy_->GetRadius_())) {
 		isAlive = false;
 	}
+
 }
 
 void Player::Draw() {

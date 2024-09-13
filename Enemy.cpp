@@ -12,170 +12,176 @@ Enemy::Enemy(Vector2 pos) {
 	EnemyGH = Novice::LoadTexture("./Resource/police.png");
 	isWallCollision = false;
 	DirectionCount = 240;
+	isAlive = true;
 }
 
 void Enemy::Update() {
 	map->Update(scene);
-	//向きの初期化
-	direction.x = 0.0f;
-	direction.y = 0.0f;
+	light->Update(DirectionNumber, pos_);
 
-	DirectionCount -= 1;
 
-	if (isWallCollision == false) {
-		if (DirectionCount > 0) {
-			if (DirectionNumber == 1/*右*/) {
-				direction.x += 1.0f;
-			}
-			if (DirectionNumber == 2/*左*/) {
-				direction.x -= 1.0f;
-			}
-			if (DirectionNumber == 3/*上*/) {
-				direction.y -= 1.0f;
-			}
-			if (DirectionNumber == 4/*下*/) {
-				direction.y += 1.0f;
+
+	if(isAlive==true){
+		//向きの初期化
+		direction.x = 0.0f;
+		direction.y = 0.0f;
+
+		DirectionCount -= 1;
+
+		if (isWallCollision == false) {
+			if (DirectionCount > 0) {
+				if (DirectionNumber == 1/*右*/) {
+					direction.x += 1.0f;
+				}
+				if (DirectionNumber == 2/*左*/) {
+					direction.x -= 1.0f;
+				}
+				if (DirectionNumber == 3/*上*/) {
+					direction.y -= 1.0f;
+				}
+				if (DirectionNumber == 4/*下*/) {
+					direction.y += 1.0f;
+				}
 			}
 		}
-	}
-	if (isWallCollision) {
-		DirectionNumber = static_cast<int>(rand() % 4 + 1);
-		isWallCollision = false;
-	}
+		if (isWallCollision) {
+			DirectionNumber = static_cast<int>(rand() % 4 + 1);
+			isWallCollision = false;
+		}
 
-	if (DirectionCount<=0){
-		DirectionCount = 240;
-		DirectionNumber = static_cast<int>(rand() % 4 + 1);
-	}
+		if (DirectionCount <= 0) {
+			DirectionCount = 240;
+			DirectionNumber = static_cast<int>(rand() % 4 + 1);
+		}
 
 
-	//移動量の決定
-	verocity.x = direction.x * float(speed_);
-	verocity.y = direction.y * float(speed_);
+		//移動量の決定
+		verocity.x = direction.x * float(speed_);
+		verocity.y = direction.y * float(speed_);
+		/*仮に移動させる
+		  playerの座標の代入をして
+	　	 仮に動いたｘの計算をする*/
+		tmpPos_ = pos_;
+		tmpPos_.x += verocity.x;
 
-	/*仮に移動させる
-	  playerの座標の代入をして
-　	 仮に動いたｘの計算をする*/
-	tmpPos_ = pos_;
-	tmpPos_.x += verocity.x;
+		//当たり判定を取るために四辺の変数を代入する
+		corners_ = hitBox_->PosUpDate(tmpPos_, radius_, blockSize);
+		//ブロック当たり判定
+		if (hitBox_->HitBox_(map->ppMap, corners_, 1)) {
+			hitMapKeep = hitBox_->MapHitBox(corners_, map->ppMap, 1);
 
-	//当たり判定を取るために四辺の変数を代入する
-	corners_ = hitBox_->PosUpDate(tmpPos_, radius_, blockSize);
-	//ブロック当たり判定
-	if (hitBox_->HitBox_(map->ppMap, corners_, 1)) {
-		hitMapKeep = hitBox_->MapHitBox(corners_, map->ppMap, 1);
-
-		if (pos_.x < static_cast<float>(hitMapKeep.x * blockSize + blockSize)) {
-			while (true) {
-				tmpPos_.x -= 0.1f;
-				corners_ = hitBox_->PosUpDate(tmpPos_, radius_, blockSize);
-				if (!hitBox_->HitBox_(map->ppMap, corners_, 1)) {
-					pos_.x = tmpPos_.x;
-					isWallCollision = true;
-					break;
+			if (pos_.x < static_cast<float>(hitMapKeep.x * blockSize + blockSize)) {
+				while (true) {
+					tmpPos_.x -= 0.1f;
+					corners_ = hitBox_->PosUpDate(tmpPos_, radius_, blockSize);
+					if (!hitBox_->HitBox_(map->ppMap, corners_, 1)) {
+						pos_.x = tmpPos_.x;
+						isWallCollision = true;
+						break;
+					}
+				}
+			} else {
+				while (true) {
+					tmpPos_.x += 0.1f;
+					corners_ = hitBox_->PosUpDate(tmpPos_, radius_, blockSize);
+					if (!hitBox_->HitBox_(map->ppMap, corners_, 1)) {
+						pos_.x = tmpPos_.x;
+						isWallCollision = true;
+						break;
+					}
 				}
 			}
 		} else {
-			while (true) {
-				tmpPos_.x += 0.1f;
-				corners_ = hitBox_->PosUpDate(tmpPos_, radius_, blockSize);
-				if (!hitBox_->HitBox_(map->ppMap, corners_, 1)) {
-					pos_.x = tmpPos_.x;
-					isWallCollision = true;
-					break;
-				}
-			}
+			pos_.x = tmpPos_.x;
 		}
-	} else {
-		pos_.x = tmpPos_.x;
-	}
 
-	if (hitBox_->HitBox_(map->ppMap, corners_, 3)) {
-		hitMapKeep = hitBox_->MapHitBox(corners_, map->ppMap, 3);
+		if (hitBox_->HitBox_(map->ppMap, corners_, 3)) {
+			hitMapKeep = hitBox_->MapHitBox(corners_, map->ppMap, 3);
 
-		if (pos_.x < static_cast<float>(hitMapKeep.x * blockSize + blockSize)) {
-			while (true) {
+			if (pos_.x < static_cast<float>(hitMapKeep.x * blockSize + blockSize)) {
+				while (true) {
 
 
-				tmpPos_.x -= 0.1f;
-				corners_ = hitBox_->PosUpDate(tmpPos_, radius_, blockSize);
-				if (!hitBox_->HitBox_(map->ppMap, corners_, 3)) {
-					pos_.x = tmpPos_.x;
-					break;
+					tmpPos_.x -= 0.1f;
+					corners_ = hitBox_->PosUpDate(tmpPos_, radius_, blockSize);
+					if (!hitBox_->HitBox_(map->ppMap, corners_, 3)) {
+						pos_.x = tmpPos_.x;
+						break;
+					}
+				}
+			} else {
+				while (true) {
+					tmpPos_.x += 0.1f;
+					corners_ = hitBox_->PosUpDate(tmpPos_, radius_, blockSize);
+					if (!hitBox_->HitBox_(map->ppMap, corners_, 3)) {
+						pos_.x = tmpPos_.x;
+						break;
+					}
 				}
 			}
 		} else {
-			while (true) {
-				tmpPos_.x += 0.1f;
-				corners_ = hitBox_->PosUpDate(tmpPos_, radius_, blockSize);
-				if (!hitBox_->HitBox_(map->ppMap, corners_, 3)) {
-					pos_.x = tmpPos_.x;
-					break;
-				}
-			}
+			pos_.x = tmpPos_.x;
 		}
-	} else {
-		pos_.x = tmpPos_.x;
-	}
 
-	/*仮に移動させる
-	  playerの座標の代入をして
-　	 仮に動いたｘの計算をする*/
-	tmpPos_ = pos_;
-	tmpPos_.y += verocity.y;
+		/*仮に移動させる
+		  playerの座標の代入をして
+	　	 仮に動いたｘの計算をする*/
+		tmpPos_ = pos_;
+		tmpPos_.y += verocity.y;
 
-	//当たり判定を取るために四辺の変数を代入する
-	corners_ = hitBox_->PosUpDate(tmpPos_, radius_, blockSize);
+		//当たり判定を取るために四辺の変数を代入する
+		corners_ = hitBox_->PosUpDate(tmpPos_, radius_, blockSize);
 
-	if (hitBox_->HitBox_(map->ppMap, corners_, 1)) {
-		hitMapKeep = hitBox_->MapHitBox(corners_, map->ppMap, 1);
+		if (hitBox_->HitBox_(map->ppMap, corners_, 1)) {
+			hitMapKeep = hitBox_->MapHitBox(corners_, map->ppMap, 1);
 
-		if (pos_.y < static_cast<float>(hitMapKeep.y * blockSize + blockSize)) {
-			while (true) {
-				tmpPos_.y -= 0.1f;
-				corners_ = hitBox_->PosUpDate(tmpPos_, radius_, blockSize);
-				if (!hitBox_->HitBox_(map->ppMap, corners_, 1)) {
-					pos_.y = tmpPos_.y;
-					isWallCollision = true;
-					break;
+			if (pos_.y < static_cast<float>(hitMapKeep.y * blockSize + blockSize)) {
+				while (true) {
+					tmpPos_.y -= 0.1f;
+					corners_ = hitBox_->PosUpDate(tmpPos_, radius_, blockSize);
+					if (!hitBox_->HitBox_(map->ppMap, corners_, 1)) {
+						pos_.y = tmpPos_.y;
+						isWallCollision = true;
+						break;
+					}
+				}
+			} else {
+				while (true) {
+					tmpPos_.y += 0.1f;
+					corners_ = hitBox_->PosUpDate(tmpPos_, radius_, blockSize);
+					if (!hitBox_->HitBox_(map->ppMap, corners_, 1)) {
+						pos_.y = tmpPos_.y;
+						isWallCollision = true;
+						break;
+					}
 				}
 			}
 		} else {
-			while (true) {
-				tmpPos_.y += 0.1f;
-				corners_ = hitBox_->PosUpDate(tmpPos_, radius_, blockSize);
-				if (!hitBox_->HitBox_(map->ppMap, corners_, 1)) {
-					pos_.y = tmpPos_.y;
-					isWallCollision = true;
-					break;
-				}
-			}
+			pos_.y = tmpPos_.y;
 		}
-	} else {
-		pos_.y = tmpPos_.y;
 	}
 
 
 }
 
 void Enemy::Draw() {
-	Novice::DrawSprite(
-		static_cast<int>(pos_.x - (radius_ * 0.5f)), static_cast<int>(pos_.y - (radius_ * 0.5f)),
-		EnemyGH,
-		1.0f, 1.0f,
-		0.0f,
-		WHITE
-	);
-	Novice::DrawBox(
-		static_cast<int>(pos_.x - (radius_ * 0.5f)), static_cast<int>(pos_.y - (radius_ * 0.5f)),
-		static_cast<int>(radius_), static_cast<int>(radius_),
-		0.0f, BLACK, kFillModeWireFrame
-	);
-
-	if (isWallCollision == false) {
-		Novice::ScreenPrintf(0, 640, "isWallCollision=false");
-	} else {
-		Novice::ScreenPrintf(0, 640, "isWallCollision=true");
+	light->Draw(DirectionNumber);
+	if (isAlive == true) {
+		Novice::DrawSprite(
+			static_cast<int>(pos_.x - (radius_ * 0.5f)), static_cast<int>(pos_.y - (radius_ * 0.5f)),
+			EnemyGH,
+			1.0f, 1.0f,
+			0.0f,
+			WHITE
+		);
+		Novice::DrawBox(
+			static_cast<int>(pos_.x - (radius_ * 0.5f)), static_cast<int>(pos_.y - (radius_ * 0.5f)),
+			static_cast<int>(radius_), static_cast<int>(radius_),
+			0.0f, BLACK, kFillModeWireFrame
+		);
 	}
+
+
+
 	Novice::ScreenPrintf(0, 680, "DirectionCount=%d",DirectionCount);
 }

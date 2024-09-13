@@ -3,7 +3,7 @@
 
 enum Scene_ {
 	titel,
-	/*rule,*/
+	rule,
 	Select,
 	stage_1,
 	stage_2,
